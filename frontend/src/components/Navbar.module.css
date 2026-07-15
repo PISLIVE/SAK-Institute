@@ -344,8 +344,6 @@
     border-top: none;
   }
 
-  .dropdown:hover .dropdownMenu,
-  .dropdown:active .dropdownMenu,
   .dropdownActive .dropdownMenu {
     display: block;
   }
