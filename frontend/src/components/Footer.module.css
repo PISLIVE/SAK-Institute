@@ -1,0 +1,127 @@
+.footer {
+  background-color: var(--text-primary);
+  color: white;
+  padding-top: 5rem;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footerBrand {
+  flex: 2;
+  min-width: 300px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.collegeName {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  line-height: 1.1;
+  font-family: var(--font-heading);
+}
+
+.collegeSubName {
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.description {
+  color: #94a3b8;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  max-width: 400px;
+}
+
+.footerLinks, .footerContact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footerLinks h3, .footerContact h3 {
+  font-size: 1.25rem;
+  font-family: var(--font-heading);
+  margin-bottom: 1.5rem;
+  color: white;
+  position: relative;
+  display: inline-block;
+}
+
+.footerLinks h3::after, .footerContact h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.footerLinks ul, .footerContact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footerLinks a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-color);
+}
+
+.footerContact li {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.footerBottom {
+  background-color: #0f172a;
+  padding: 1.5rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footerBottom p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}

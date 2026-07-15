@@ -1,0 +1,264 @@
+.header {
+  width: 100%;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+/* Top Bar */
+.topBar {
+  background-color: #1e293b; /* Dark slate */
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.topBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a {
+  color: inherit;
+}
+
+.socials a:hover {
+  color: white;
+}
+
+.topLinks {
+  display: flex;
+  align-items: center;
+}
+
+.topLinks a {
+  padding: 0 0.5rem;
+}
+
+.topLinks a:hover {
+  color: white;
+}
+
+.divider {
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+.applyBtnTop {
+  background-color: #0ea5e9;
+  color: white !important;
+  padding: 0 1rem !important;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.applyBtnTop:hover {
+  background-color: #0284c7;
+}
+
+/* Middle Header */
+.middleHeader {
+  background-color: white;
+  padding: 1rem 0;
+}
+
+.middleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoImg {
+  border-radius: 4px;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.collegeName {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.collegeSubName {
+  color: #475569;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.contactInfo {
+  display: flex;
+  gap: 3rem;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 1.5rem;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.infoValue {
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.infoValue:hover {
+  color: var(--primary-color);
+}
+
+/* Main Navigation */
+.mainNav {
+  background-color: var(--primary-color); /* Teal medical color */
+}
+
+.navContainer {
+  display: flex;
+}
+
+.navLinks {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.navLinks li {
+  position: relative;
+}
+
+.navLinks a {
+  display: block;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: background-color 0.2s;
+}
+
+.navLinks li:first-child a {
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.navLinks a:hover {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.navLinks a:hover,
+.dropdownTrigger:hover {
+  opacity: 0.8;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownTrigger {
+  display: block;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 1rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: opacity 0.2s ease, background-color 0.2s;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-top: 3px solid var(--accent-color);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 100;
+}
+
+.dropdown:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownMenu li {
+  display: block;
+}
+
+.dropdownMenu a {
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  display: block;
+  font-size: 0.9rem;
+  text-transform: none;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.dropdownMenu li:last-child a {
+  border-bottom: none;
+}
+
+.dropdownMenu a:hover {
+  background-color: #f8fafc;
+  color: var(--primary-color);
+  padding-left: 1.8rem;
+}
+
+@media (max-width: 992px) {
+  .middleContainer {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .contactInfo {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .infoBlock {
+    border-left: none;
+    padding-left: 0;
+  }
+  .navLinks a {
+    padding: 0.75rem 1rem;
+  }
+}
