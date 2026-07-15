@@ -108,7 +108,13 @@
 }
 
 @media (max-width: 768px) {
+  .heroContent { padding: 0 1rem; }
   .title { font-size: 2.5rem; }
   .subtitle { font-size: 1.1rem; }
-  .ctaGroup { flex-direction: column; }
+  .ctaGroup { flex-direction: column; width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 2rem; }
+  .subtitle { font-size: 1rem; }
 }

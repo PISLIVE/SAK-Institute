@@ -336,4 +336,24 @@
     grid-template-columns: 1fr;
     grid-auto-rows: 250px;
   }
+  
+  .sectionHeaderCenter h2, .sectionHeaderCenterLight h2, .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+  
+  .missionVisionSection {
+    padding: 3rem 0;
+  }
+  
+  .achievementsSection, .campusShowcase, .leadershipSectionWrapper {
+    padding: 3rem 0;
+  }
+  
+  .leadershipCard {
+    padding: 1.5rem;
+  }
 }

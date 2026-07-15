@@ -6,6 +6,15 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (name: string) => {
+    if (activeDropdown === name) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(name);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -83,8 +92,8 @@ export default function Navbar() {
             <li><Link href="/">HOME</Link></li>
             <li><Link href="/about">ABOUT US</Link></li>
             {/* Dropdown Menu for Courses */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'courses' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('courses')}>
                 COURSES OFFERED
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -97,8 +106,8 @@ export default function Navbar() {
             </li>
 
             {/* Dropdown Menu for Admission */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'admission' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('admission')}>
                 ADMISSION
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -113,8 +122,8 @@ export default function Navbar() {
             </li>
 
             {/* Dropdown Menu for Department */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'department' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('department')}>
                 DEPARTMENT
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -127,8 +136,8 @@ export default function Navbar() {
               </ul>
             </li>
             {/* Dropdown Menu for Teaching Staff */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'staff' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('staff')}>
                 TEACHING STAFF
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -140,8 +149,8 @@ export default function Navbar() {
               </ul>
             </li>
             {/* Dropdown Menu for Facilities */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'facilities' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('facilities')}>
                 FACILITIES
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -155,8 +164,8 @@ export default function Navbar() {
             </li>
 
             {/* Dropdown Menu for Rules */}
-            <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>
+            <li className={`${styles.dropdown} ${activeDropdown === 'rules' ? styles.dropdownActive : ''}`}>
+              <span className={styles.dropdownTrigger} onClick={() => toggleDropdown('rules')}>
                 RULES
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>

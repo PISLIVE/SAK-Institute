@@ -135,6 +135,18 @@
 }
 
 @media (max-width: 768px) {
+  .coursesPage {
+    padding-bottom: 3rem;
+  }
+  .introText {
+    margin-bottom: 2rem;
+  }
+  .introText h2 {
+    font-size: 1.8rem;
+  }
+  .cardBody {
+    padding: 1.5rem;
+  }
   .detailsGrid {
     grid-template-columns: 1fr;
   }
@@ -142,5 +154,11 @@
   .cardHeader {
     flex-direction: column;
     text-align: center;
+    padding: 1.5rem;
+  }
+  .cardFooter {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 }

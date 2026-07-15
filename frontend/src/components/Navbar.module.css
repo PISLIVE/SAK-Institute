@@ -336,7 +336,8 @@
   }
 
   .dropdown:hover .dropdownMenu,
-  .dropdown:active .dropdownMenu {
+  .dropdown:active .dropdownMenu,
+  .dropdownActive .dropdownMenu {
     display: block;
   }
 }

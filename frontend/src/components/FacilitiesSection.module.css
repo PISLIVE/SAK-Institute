@@ -74,3 +74,23 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .facilitiesSection {
+    padding: 2rem 0;
+  }
+  .header {
+    margin-bottom: 2rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+}
