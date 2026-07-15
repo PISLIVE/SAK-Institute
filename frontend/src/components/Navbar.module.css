@@ -358,4 +358,42 @@
     color: white;
     padding-left: 2.8rem;
   }
+
+  .mobileContactAndSocials {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobileContact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobileContact a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .mobileSocials {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .mobileSocials a {
+    color: white;
+    opacity: 0.8;
+  }
+
+  .mobileSocials a:hover {
+    opacity: 1;
+  }
 }
