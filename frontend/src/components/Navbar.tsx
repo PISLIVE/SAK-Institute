@@ -7,7 +7,7 @@ export default function Navbar() {
     <header className={styles.header}>
       {/* Top Bar */}
       <div className={styles.topBar}>
-        <div className={`container ${styles.topBarContainer}`}>
+        <div className={styles.topBarContainer}>
           <div className={styles.socials}>
             <a href="#" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -31,7 +31,7 @@ export default function Navbar() {
 
       {/* Middle Header */}
       <div className={styles.middleHeader}>
-        <div className={`container ${styles.middleContainer}`}>
+        <div className={styles.middleContainer}>
           <Link href="/" className={styles.logoArea}>
             <Image
               src="/sak-logo.png"
@@ -61,7 +61,7 @@ export default function Navbar() {
 
       {/* Main Navigation */}
       <nav className={styles.mainNav}>
-        <div className={`container ${styles.navContainer}`}>
+        <div className={styles.navContainer}>
           <ul className={styles.navLinks}>
             <li><Link href="/">HOME</Link></li>
             <li><Link href="/about">ABOUT US</Link></li>
