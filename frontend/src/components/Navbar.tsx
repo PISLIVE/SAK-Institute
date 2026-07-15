@@ -1,8 +1,12 @@
+"use client";
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       {/* Top Bar */}
@@ -56,11 +60,24 @@ export default function Navbar() {
               <a href="tel:+918884330808" className={styles.infoValue}>+91 8884330808</a>
             </div>
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className={styles.mobileMenuBtn} 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            {mobileMenuOpen ? (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            ) : (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            )}
+          </button>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <nav className={styles.mainNav}>
+      <nav className={`${styles.mainNav} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
         <div className={styles.navContainer}>
           <ul className={styles.navLinks}>
             <li><Link href="/">HOME</Link></li>

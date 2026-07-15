@@ -244,21 +244,99 @@
   padding-left: 1.8rem;
 }
 
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobileMenuBtn svg {
+  display: block;
+}
+
 @media (max-width: 992px) {
+  .topBar {
+    display: none;
+  }
+  
   .middleContainer {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
+    padding: 0 1rem;
   }
+  
   .contactInfo {
-    gap: 1rem;
+    display: none;
+  }
+  
+  .mobileMenuBtn {
+    display: block;
+  }
+
+  .logoImg {
+    width: 55px;
+    height: 65px;
+  }
+  
+  .collegeName {
+    font-size: 1.25rem;
+  }
+  
+  .collegeSubName {
+    font-size: 0.85rem;
+  }
+
+  .mainNav {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+  }
+
+  .mobileOpen {
+    display: block;
+  }
+
+  .navContainer {
+    padding: 0;
+  }
+
+  .navLinks {
     flex-direction: column;
+    background-color: var(--primary-color);
   }
-  .infoBlock {
-    border-left: none;
-    padding-left: 0;
+  
+  .navLinks li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .navLinks a {
-    padding: 0.75rem 1rem;
+
+  .navLinks a, .dropdownTrigger {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .dropdownMenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: none;
+    min-width: 100%;
+    border-top: none;
+  }
+
+  .dropdown:hover .dropdownMenu,
+  .dropdown:active .dropdownMenu {
+    display: block;
   }
 }
