@@ -33,16 +33,19 @@ export default function Navbar() {
       <div className={styles.middleHeader}>
         <div className={`container ${styles.middleContainer}`}>
           <Link href="/" className={styles.logoArea}>
-            <Image 
-              src="/sak-logo.png" 
-              alt="SAK Group of Institutions Logo" 
-              width={70} 
-              height={80} 
+            <Image
+              src="/sak-logo.png"
+              alt="SAK Group of Institutions Logo"
+              width={70}
+              height={80}
               className={styles.logoImg}
               style={{ objectFit: 'contain' }}
             />
-          </Link>
-          
+            <div className={styles.brandText}>
+              <h1 className={styles.collegeName}>SAK Group of Institute</h1>
+              <p className={styles.collegeSubName}>Excellence in Education</p>
+            </div>          </Link>
+
           <div className={styles.contactInfo}>
             <div className={styles.infoBlock}>
               <span className={styles.infoLabel}>EMAIL</span>
@@ -75,7 +78,7 @@ export default function Navbar() {
                 <li><Link href="/courses/msc">M.Sc. Nursing</Link></li>
               </ul>
             </li>
-            
+
             {/* Dropdown Menu for Admission */}
             <li className={styles.dropdown}>
               <span className={styles.dropdownTrigger}>
@@ -91,7 +94,7 @@ export default function Navbar() {
                 <li><Link href="/admission/bank-details">Bank Details</Link></li>
               </ul>
             </li>
-            
+
             {/* Dropdown Menu for Department */}
             <li className={styles.dropdown}>
               <span className={styles.dropdownTrigger}>
@@ -133,7 +136,7 @@ export default function Navbar() {
                 <li><Link href="/facilities/clinical-training">Clinical Training</Link></li>
               </ul>
             </li>
-            
+
             {/* Dropdown Menu for Rules */}
             <li className={styles.dropdown}>
               <span className={styles.dropdownTrigger}>
