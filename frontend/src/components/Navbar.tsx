@@ -36,8 +36,8 @@ export default function Navbar() {
             <Image 
               src="/sak-logo.png" 
               alt="SAK Group of Institutions Logo" 
-              width={100} 
-              height={115} 
+              width={70} 
+              height={80} 
               className={styles.logoImg}
               style={{ objectFit: 'contain' }}
             />
@@ -64,7 +64,10 @@ export default function Navbar() {
             <li><Link href="/about">ABOUT US</Link></li>
             {/* Dropdown Menu for Courses */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>COURSES OFFERED ▾</span>
+              <span className={styles.dropdownTrigger}>
+                COURSES OFFERED
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/courses/gnm">GNM (General Nursing)</Link></li>
                 <li><Link href="/courses/bsc">B.Sc. Nursing</Link></li>
@@ -75,7 +78,10 @@ export default function Navbar() {
             
             {/* Dropdown Menu for Admission */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>ADMISSION ▾</span>
+              <span className={styles.dropdownTrigger}>
+                ADMISSION
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/admission/procedure">Admission Procedure</Link></li>
                 <li><Link href="/admission/merit-list">Merit List for Admission</Link></li>
@@ -88,7 +94,10 @@ export default function Navbar() {
             
             {/* Dropdown Menu for Department */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>DEPARTMENT ▾</span>
+              <span className={styles.dropdownTrigger}>
+                DEPARTMENT
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/department/medical-surgical">Medical Surgical Nursing</Link></li>
                 <li><Link href="/department/community-health">Community Health Nursing</Link></li>
@@ -99,7 +108,10 @@ export default function Navbar() {
             </li>
             {/* Dropdown Menu for Teaching Staff */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>TEACHING STAFF ▾</span>
+              <span className={styles.dropdownTrigger}>
+                TEACHING STAFF
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/staff/principal">Principal's Profile</Link></li>
                 <li><Link href="/staff/faculty">Core Faculty</Link></li>
@@ -109,7 +121,10 @@ export default function Navbar() {
             </li>
             {/* Dropdown Menu for Facilities */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>FACILITIES ▾</span>
+              <span className={styles.dropdownTrigger}>
+                FACILITIES
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/facilities/library">Library</Link></li>
                 <li><Link href="/facilities/laboratories">Laboratories</Link></li>
@@ -121,7 +136,10 @@ export default function Navbar() {
             
             {/* Dropdown Menu for Rules */}
             <li className={styles.dropdown}>
-              <span className={styles.dropdownTrigger}>RULES ▾</span>
+              <span className={styles.dropdownTrigger}>
+                RULES
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
               <ul className={styles.dropdownMenu}>
                 <li><Link href="/rules/code-of-conduct">Code of Conduct</Link></li>
                 <li><Link href="/rules/anti-ragging">Anti-Ragging Policy</Link></li>

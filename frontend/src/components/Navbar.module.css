@@ -68,7 +68,7 @@
 /* Middle Header */
 .middleHeader {
   background-color: white;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .middleContainer {
@@ -108,7 +108,7 @@
 
 .contactInfo {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 .infoBlock {
@@ -156,24 +156,16 @@
 .navLinks a {
   display: block;
   color: white;
-  padding: 1rem 1.5rem;
-  font-size: 0.9rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  transition: background-color 0.2s;
-}
-
-.navLinks li:first-child a {
-  border-left: 1px solid rgba(255,255,255,0.1);
-}
-
-.navLinks a:hover {
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: background-color 0.2s, color 0.2s ease, opacity 0.2s ease;
 }
 
 .navLinks a:hover,
 .dropdownTrigger:hover {
   opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Dropdown Styles */
@@ -184,15 +176,20 @@
 }
 
 .dropdownTrigger {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   cursor: pointer;
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 1rem 1.5rem;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+  padding: 0.8rem 1.2rem;
   transition: opacity 0.2s ease, background-color 0.2s;
+}
+
+.chevron {
+  margin-top: 1px;
 }
 
 .dropdownMenu {
