@@ -257,6 +257,10 @@
   display: block;
 }
 
+.mobileContactAndSocials {
+  display: none;
+}
+
 @media (max-width: 992px) {
   .topBar {
     display: none;
