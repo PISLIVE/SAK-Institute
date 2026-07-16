@@ -302,6 +302,7 @@
 
   .navContainer {
     padding: 0;
+    flex-direction: column;
   }
 
   .navLinks {
