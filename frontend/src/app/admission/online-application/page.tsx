@@ -1,22 +1,20 @@
 import PageHeader from '@/components/PageHeader';
-import EnquiryForm from '@/components/EnquiryForm';
+import ApplicationForm from '@/components/ApplicationForm';
 
 export const metadata = {
-  title: 'Enquire Now | SAK College of Nursing',
-  description: 'Submit an enquiry for nursing programs at SAK College of Nursing.',
+  title: 'Online Application | SAK College of Nursing',
+  description: 'Apply online for nursing programs at SAK College of Nursing.',
 };
 
-export default function ApplyOnlinePage() {
+export default function OnlineApplicationPage() {
   return (
     <main>
-      <PageHeader title="Enquire Now" breadcrumb="Enquire" />
+      <PageHeader title="Online Application" breadcrumb="Apply Now" />
       
       <section style={{ padding: '5rem 1rem 8rem 1rem', background: '#f8fafc', position: 'relative' }}>
-        
-        {/* Background decorative elements */}
         <div style={{
           position: 'absolute',
-          top: '10%',
+          top: '5%',
           left: '5%',
           width: '300px',
           height: '300px',
@@ -38,8 +36,17 @@ export default function ApplyOnlinePage() {
         }}></div>
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.5rem', color: 'var(--text-primary)', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+              Start Your Journey
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+              Please fill out the application form carefully. Ensure all details match your official documents.
+            </p>
+          </div>
+          
           <div className="animate-on-load">
-            <EnquiryForm />
+            <ApplicationForm />
           </div>
         </div>
       </section>

@@ -16,17 +16,17 @@ export default function CommunityHealthDepartmentPage() {
           
           {/* Left Column: About & HOD */}
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }}>About the Department</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">About the Department</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
               The Department of Community Health Nursing trains students to deliver holistic healthcare services outside the traditional hospital setting. 
               We focus on preventive, promotive, and rehabilitative care, preparing nurses to lead health camps, rural outreach programs, and public health initiatives.
             </p>
             
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
+            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ fontSize: '3rem' }}>👨‍⚕️</div>
                 <div>
-                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Prof. Robert Smith</h3>
+                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }} className="animate-on-load">Prof. Robert Smith</h3>
                   <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>Head of Department (HOD)<br/>M.Sc. Community Health Nursing, 12+ Years Experience</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function CommunityHealthDepartmentPage() {
               />
             </div>
             
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Key Activities</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Key Activities</h3>
             <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.2rem', lineHeight: '1.8' }}>
               <li>Rural and Urban Health Postings</li>
               <li>Organization of Health Assessment Camps</li>

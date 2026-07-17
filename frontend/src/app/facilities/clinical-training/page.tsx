@@ -13,12 +13,12 @@ export default function ClinicalTrainingPage() {
       <section className="container" style={{ padding: '4rem 0 6rem 0' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2.5rem' }}>Hospital Affiliations</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2.5rem' }} className="animate-on-load">Hospital Affiliations</h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', marginBottom: '2rem' }}>
               Practical experience is the cornerstone of nursing education. SAK College of Nursing is affiliated with multiple multi-specialty and super-specialty hospitals to ensure our students receive comprehensive, hands-on clinical exposure in various medical disciplines.
             </p>
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
-              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Training Areas</h3>
+            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
+              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Training Areas</h3>
               <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.6', paddingLeft: '1.2rem' }}>
                 <li>Intensive Care Units (ICU & NICU)</li>
                 <li>Operation Theaters & Recovery Rooms</li>

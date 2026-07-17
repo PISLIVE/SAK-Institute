@@ -10,28 +10,34 @@ export const metadata = {
 export default function CoursesPage() {
   const programs = [
     {
-      title: 'General Nursing & Midwifery (GNM)',
+      title: 'GNM',
+      fullName: 'General Nursing & Midwifery',
       duration: '3 Years',
-      eligibility: '10+2 with English and must have obtained a minimum of 40% at the qualifying examination and English individually from any recognized board.',
-      description: 'The GNM program is designed to prepare general nurses who will function as members of the health team beginning with consultancies for first level positions in both hospitals and community health environments.',
-      career: 'Staff Nurse, Home Health Nurse, Community Health Worker.',
-      icon: '🏥'
+      eligibility: '10+2 with English and 40% minimum.',
+      description: 'Prepare as a general nurse to function as a health team member in hospitals and community health environments.',
+      career: 'Staff Nurse, Home Health Nurse',
+      icon: '🏥',
+      color: '#0ea5e9' // sky blue
     },
     {
-      title: 'B.Sc. Nursing (Basic)',
+      title: 'B.Sc. Nursing',
+      fullName: 'Basic B.Sc. Nursing',
       duration: '4 Years',
-      eligibility: '10+2 with Science (PCB) & English Core/English Elective with aggregate of 45% marks from recognized board under AISSCE/CBSE/ICSE/SSCE/HSCE.',
-      description: 'A comprehensive undergraduate program that prepares students to be competent professional nurses and midwives who can make independent decisions in nursing situations, protect the rights of and facilitate individuals and groups in pursuit of health.',
-      career: 'Clinical Nurse Specialist, Nurse Educator, Nursing Administrator.',
-      icon: '⚕️'
+      eligibility: '10+2 Science (PCB) & English with 45%.',
+      description: 'Comprehensive undergraduate program preparing competent professional nurses for independent decision-making.',
+      career: 'Clinical Nurse Specialist, Educator',
+      icon: '⚕️',
+      color: '#0d9488' // primary teal
     },
     {
-      title: 'Post Basic B.Sc. Nursing',
+      title: 'P.B. B.Sc. Nursing',
+      fullName: 'Post Basic B.Sc. Nursing',
       duration: '2 Years',
-      eligibility: 'Pass in GNM after 10+2 or equivalent examination preferably with Science subjects. Registered as a nurse and midwife with any State Nursing Registration Council.',
-      description: 'Designed for registered GNM nurses who wish to upgrade their skills and knowledge to earn a Bachelor\'s degree. This program bridges the gap between diploma and degree nursing education.',
-      career: 'Advanced Practice Nurse, Nursing Supervisor, Public Health Nurse.',
-      icon: '🎓'
+      eligibility: 'Registered GNM nurse.',
+      description: 'Designed for registered GNM nurses to upgrade skills and earn a Bachelor\'s degree.',
+      career: 'Advanced Practice Nurse, Supervisor',
+      icon: '🎓',
+      color: '#8b5cf6' // violet
     }
   ];
 
@@ -39,45 +45,58 @@ export default function CoursesPage() {
     <main className={styles.coursesPage}>
       <PageHeader title="Courses Offered" breadcrumb="Courses" />
       
-      <section className="container">
+      <section className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '3rem' }}>
         <div className={styles.introText}>
-          <h2>Academic Programs</h2>
-          <p>
-            At SAK College of Nursing, we offer rigorous, INC-approved academic programs designed 
-            to transform students into highly skilled, ethical, and compassionate nursing professionals 
-            ready to meet the demands of global healthcare.
+          <h2 className="animate-on-load">Our Nursing Programs</h2>
+          <p className="animate-on-load" style={{ animationDelay: '0.2s' }}>
+            Transform your passion into a rewarding career. We offer rigorous, INC-approved programs 
+            designed to create highly skilled, ethical, and compassionate healthcare professionals.
           </p>
         </div>
 
-        <div className={styles.programList}>
+        <div className={styles.coursesGrid}>
           {programs.map((program, index) => (
-            <div key={index} className={styles.programCard}>
-              <div className={styles.cardHeader}>
-                <div className={styles.icon}>{program.icon}</div>
-                <div>
-                  <h3 className={styles.programTitle}>{program.title}</h3>
-                  <span className={styles.duration}>⏱️ Duration: {program.duration}</span>
+            <div 
+              key={index} 
+              className={`${styles.courseCard} animate-on-load`} 
+              style={{ animationDelay: `${0.3 + (index * 0.2)}s` }}
+            >
+              <div className={styles.cardHeader} style={{ background: `linear-gradient(135deg, ${program.color}15, ${program.color}05)` }}>
+                <div className={styles.iconWrapper} style={{ color: program.color, borderColor: `${program.color}30` }}>
+                  {program.icon}
+                </div>
+                <div className={styles.titleWrapper}>
+                  <h3 className={styles.shortTitle} style={{ color: program.color }}>{program.title}</h3>
+                  <p className={styles.longTitle}>{program.fullName}</p>
                 </div>
               </div>
               
               <div className={styles.cardBody}>
+                <div className={styles.durationBadge}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>Duration: {program.duration}</span>
+                </div>
+                
                 <p className={styles.description}>{program.description}</p>
                 
-                <div className={styles.detailsGrid}>
-                  <div className={styles.detailBox}>
-                    <h4>Eligibility Criteria</h4>
-                    <p>{program.eligibility}</p>
-                  </div>
-                  <div className={styles.detailBox}>
-                    <h4>Career Opportunities</h4>
-                    <p>{program.career}</p>
-                  </div>
+                <div className={styles.infoSection}>
+                  <h4>Eligibility</h4>
+                  <p>{program.eligibility}</p>
                 </div>
                 
-                <div className={styles.cardFooter}>
-                  <Link href="/admission" className="btn-primary">Apply Now</Link>
-                  <Link href="/contact" className={styles.enquireLink}>Enquire Details →</Link>
+                <div className={styles.infoSection}>
+                  <h4>Career Outlook</h4>
+                  <p>{program.career}</p>
                 </div>
+              </div>
+
+              <div className={styles.cardFooter}>
+                <Link href="/admission/online-application" className={styles.applyBtn} style={{ backgroundColor: program.color }}>
+                  Apply Now
+                </Link>
+                <Link href="/admission/apply" className={styles.enquireBtn} style={{ color: program.color }}>
+                  Enquire
+                </Link>
               </div>
             </div>
           ))}

@@ -115,20 +115,18 @@
 
 /* Mission Vision Section */
 .missionVisionSection {
-  background-color: var(--primary-color);
-  background-image: url('/gallery11.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(135deg, var(--primary-color), #0f766e);
   position: relative;
-  padding: 6rem 0;
+  padding: 5rem 0;
 }
 
 .missionVisionSection::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(13, 148, 136, 0.95);
+  background: url('/gallery1.jpeg') center/cover;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
   z-index: 1;
 }
 
@@ -176,7 +174,8 @@
 
 /* Achievements & Milestones */
 .achievementsSection {
-  padding: 6rem 0;
+  background-color: white;
+  padding: 5rem 0;
 }
 
 .timelineGrid {
@@ -218,7 +217,7 @@
 /* Campus Showcase Grid */
 .campusShowcase {
   background-color: #f8fafc;
-  padding: 6rem 0;
+  padding: 5rem 0;
 }
 
 .campusGrid {
@@ -250,7 +249,7 @@
 /* Leadership Section */
 .leadershipSectionWrapper {
   background: white;
-  padding: 6rem 0;
+  padding: 4rem 0 6rem 0;
 }
 
 .leadershipSection {

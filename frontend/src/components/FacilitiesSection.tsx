@@ -24,8 +24,8 @@ export default function FacilitiesSection() {
           </div>
           
           <div className={`glass-panel ${styles.facilityCard}`}>
-            <div className={styles.imagePlaceholder}>
-              <span>🏥</span>
+            <div className={styles.imageWrapper}>
+              <Image src="/hospital_building.png" alt="Parent Hospital Tie-ups" width={400} height={300} className={styles.image} />
             </div>
             <div className={styles.content}>
               <h3>Parent Hospital Tie-ups</h3>
@@ -34,8 +34,8 @@ export default function FacilitiesSection() {
           </div>
           
           <div className={`glass-panel ${styles.facilityCard}`}>
-            <div className={styles.imagePlaceholder}>
-              <span>📚</span>
+            <div className={styles.imageWrapper}>
+              <Image src="/medical_library.png" alt="Central Library" width={400} height={300} className={styles.image} />
             </div>
             <div className={styles.content}>
               <h3>Central Library</h3>

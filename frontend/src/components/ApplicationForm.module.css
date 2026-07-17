@@ -1,0 +1,234 @@
+.formContainer {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 2;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.step span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stepCircle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.activeStep {
+  color: var(--primary-color);
+}
+
+.activeStep .stepCircle {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+}
+
+.stepLine {
+  flex: 1;
+  height: 3px;
+  background: #e2e8f0;
+  margin: 0 1rem;
+  position: relative;
+  top: -15px;
+  transition: all 0.3s ease;
+}
+
+.activeLine {
+  background: var(--primary-color);
+}
+
+.formStep {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.formStep h3 {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.grid1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.inputGroup input,
+.inputGroup select {
+  padding: 1rem 1.2rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+}
+
+.noticeBox {
+  display: flex;
+  gap: 1rem;
+  background: #f0fdfa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+  margin-top: 2.5rem;
+}
+
+.noticeBox svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.noticeBox p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btnOutline {
+  padding: 0.8rem 2rem;
+  border: 2px solid #cbd5e1;
+  background: transparent;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnOutline:hover {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+.successCard {
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  background: #f0fdfa;
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.successIcon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.successCard h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.successCard p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 2rem 1.5rem;
+  }
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .step span {
+    display: none;
+  }
+  .stepper {
+    padding: 0;
+  }
+}

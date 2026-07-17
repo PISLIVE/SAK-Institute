@@ -14,11 +14,11 @@ export default function BankDetailsPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', alignItems: 'start' }}>
           
           {/* Left Column: Bank Account Info */}
-          <div className="glass-panel" style={{ padding: '3rem', borderTop: '4px solid var(--accent-color)' }}>
+          <div className="glass-panel card-3d" style={{ padding: '3rem', borderTop: '4px solid var(--accent-color)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #e2e8f0' }}>
               <div style={{ fontSize: '3rem', background: '#f0fdfa', width: '80px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', color: 'var(--primary-color)' }}>🏦</div>
               <div>
-                <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0', fontSize: '1.5rem' }}>Official Account</h3>
+                <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0', fontSize: '1.5rem' }} className="animate-on-load">Official Account</h3>
                 <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem' }}>For NEFT / RTGS / IMPS Transfers</p>
               </div>
             </div>
@@ -49,7 +49,7 @@ export default function BankDetailsPage() {
 
           {/* Right Column: Instructions */}
           <div style={{ padding: '2rem' }}>
-            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary-color)', marginBottom: '1.5rem' }}>Payment Instructions</h3>
+            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary-color)', marginBottom: '1.5rem' }} className="animate-on-load">Payment Instructions</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.7' }}>
               To ensure a smooth fee payment process and immediate confirmation of your admission or semester renewal, please strictly adhere to the following guidelines:
             </p>

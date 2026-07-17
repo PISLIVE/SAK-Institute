@@ -1,0 +1,205 @@
+.splitLayout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
+  min-height: 620px;
+}
+
+.imagePanel {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-width: 450px;
+  background-color: var(--primary-color);
+}
+
+.imageOverlay {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(13, 148, 136, 0.95) 10%, rgba(13, 148, 136, 0.6) 50%, transparent);
+  padding: 6rem 3rem 3rem;
+  color: white;
+  width: 100%;
+}
+
+.imageOverlay h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: var(--font-heading);
+}
+
+.imageOverlay p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.formPanel {
+  flex: 1;
+  min-width: 0; /* Fixes flexbox overflow clipping */
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.formContainer {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formHeader {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.formHeader h3 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.formHeader p {
+  color: var(--text-secondary);
+}
+
+.inputGroup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputField {
+  position: relative;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputField input,
+.inputField select,
+.inputField textarea {
+  width: 100%;
+  box-sizing: border-box; /* Fix for overflow glitch */
+  padding: 1rem 1.2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  background: #f8fafc;
+  outline: none;
+  transition: var(--transition-normal);
+  color: var(--text-primary);
+}
+
+.inputField select {
+  color: var(--text-secondary);
+  appearance: none; /* Make select look uniform */
+}
+
+.inputField input:focus,
+.inputField select:focus,
+.inputField textarea:focus {
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+}
+
+/* Floating Label Magic */
+.inputField label {
+  position: absolute;
+  left: 1.2rem;
+  top: 1.1rem;
+  color: #94a3b8;
+  transition: var(--transition-normal);
+  pointer-events: none;
+  background: transparent;
+  padding: 0 0.25rem;
+}
+
+/* Float label if focused, or if input is not showing placeholder (has text), or if it's a select element */
+.inputField input:focus ~ label,
+.inputField input:not(:placeholder-shown) ~ label,
+.inputField textarea:focus ~ label,
+.inputField textarea:not(:placeholder-shown) ~ label,
+.inputField select ~ label {
+  top: -0.65rem;
+  left: 1rem;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  background: white;
+  border-radius: 4px;
+}
+
+.submitBtn {
+  width: 100%;
+  box-sizing: border-box; /* Fix for overflow glitch */
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.successCard {
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+  padding: 2rem 1rem;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: rgba(20, 184, 166, 0.1);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successIcon svg {
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .splitLayout {
+    flex-direction: column;
+  }
+  .imagePanel {
+    min-height: 300px;
+    min-width: 100%;
+  }
+  .formPanel {
+    padding: 2.5rem 1.5rem;
+  }
+  .inputGroup {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

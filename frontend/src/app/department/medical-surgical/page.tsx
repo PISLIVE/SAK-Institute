@@ -16,17 +16,17 @@ export default function MedicalSurgicalDepartmentPage() {
           
           {/* Left Column: About & HOD */}
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }}>About the Department</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">About the Department</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
               The Department of Medical Surgical Nursing provides comprehensive theoretical and practical training in adult nursing care. 
               Our curriculum focuses on equipping students with advanced clinical skills, critical thinking, and the ability to manage acute and chronic illnesses across various healthcare settings.
             </p>
             
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
+            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ fontSize: '3rem' }}>👩‍⚕️</div>
                 <div>
-                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Dr. Sarah Johnson</h3>
+                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }} className="animate-on-load">Dr. Sarah Johnson</h3>
                   <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>Head of Department (HOD)<br/>Ph.D. in Medical Surgical Nursing, 15+ Years Experience</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function MedicalSurgicalDepartmentPage() {
               />
             </div>
             
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Key Facilities</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Key Facilities</h3>
             <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.2rem', lineHeight: '1.8' }}>
               <li>Advanced Medical Surgical Simulation Lab</li>
               <li>High-fidelity adult patient simulators (Mannequins)</li>

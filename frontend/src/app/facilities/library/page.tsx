@@ -21,12 +21,12 @@ export default function LibraryPage() {
             />
           </div>
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '2.5rem' }}>Knowledge Hub</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '2.5rem' }} className="animate-on-load">Knowledge Hub</h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', marginBottom: '2rem' }}>
               Our spacious, well-lit Central Library is the heart of academic life at SAK College. It houses a vast collection of medical and nursing literature to support our students' research and studies.
             </p>
-            <div className="glass-panel" style={{ padding: '2rem' }}>
-              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Library Resources</h3>
+            <div className="glass-panel card-3d" style={{ padding: '2rem' }}>
+              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Library Resources</h3>
               <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.6', paddingLeft: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <li>10,000+ Reference Books</li>
                 <li>National & International Journals</li>

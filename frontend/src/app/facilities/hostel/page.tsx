@@ -10,9 +10,9 @@ export default function HostelPage() {
     <main>
       <PageHeader title="Hostel & Mess" breadcrumb="Facilities / Hostel" />
       <section className="container" style={{ padding: '4rem 0 6rem 0' }}>
-        <div className="glass-panel" style={{ padding: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
+        <div className="glass-panel card-3d" style={{ padding: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }}>A Home Away From Home</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">A Home Away From Home</h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', marginBottom: '2rem' }}>
               We offer safe, secure, and comfortable hostel accommodations for our students. The hostels are designed to provide a conducive environment for both studying and relaxation.
             </p>
@@ -25,7 +25,7 @@ export default function HostelPage() {
             </ul>
           </div>
           <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '8px' }}>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem' }}>Mess Facilities</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem' }} className="animate-on-load">Mess Facilities</h3>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
               The central mess provides hygienic, nutritious, and balanced meals (both vegetarian and non-vegetarian) prepared in a modern kitchen. The menu is regularly updated in consultation with the student committee.
             </p>

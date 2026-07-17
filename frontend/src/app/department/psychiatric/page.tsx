@@ -16,17 +16,17 @@ export default function PsychiatricDepartmentPage() {
           
           {/* Left Column: About & HOD */}
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }}>About the Department</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">About the Department</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
               The Mental Health (Psychiatric) Nursing department prepares students to provide compassionate and evidence-based care for individuals facing mental illness. 
               We focus on therapeutic communication, behavioral therapy, psychopharmacology, and promoting mental well-being in the community.
             </p>
             
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
+            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ fontSize: '3rem' }}>👨‍⚕️</div>
                 <div>
-                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Dr. Alan Turing</h3>
+                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }} className="animate-on-load">Dr. Alan Turing</h3>
                   <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>Head of Department (HOD)<br/>Ph.D. in Psychiatric Nursing, 14+ Years Experience</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function PsychiatricDepartmentPage() {
               />
             </div>
             
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Key Facilities</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Key Facilities</h3>
             <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.2rem', lineHeight: '1.8' }}>
               <li>Clinical postings in affiliated Psychiatric Hospitals</li>
               <li>Simulated Counseling & Therapeutic Communication Lab</li>

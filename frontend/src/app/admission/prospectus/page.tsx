@@ -15,9 +15,9 @@ export default function ProspectusPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           
           {/* Left Side: Info & Download */}
-          <div className="glass-panel" style={{ padding: '3rem', borderTop: '4px solid var(--primary-color)' }}>
+          <div className="glass-panel card-3d" style={{ padding: '3rem', borderTop: '4px solid var(--primary-color)' }}>
             <div style={{ fontSize: '3.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>📖</div>
-            <h2 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '2rem' }}>Information Brochure</h2>
+            <h2 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">Information Brochure</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
               Our official prospectus is a comprehensive guide to everything SAK College of Nursing has to offer. 
               Inside, you will find detailed information regarding our infrastructure, expert faculty, modern curriculum, and vibrant campus life.
@@ -46,7 +46,7 @@ export default function ProspectusPage() {
               style={{ objectFit: 'cover' }}
             />
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', color: 'white' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Begin Your Journey</h3>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }} className="animate-on-load">Begin Your Journey</h3>
               <p style={{ opacity: 0.9 }}>Join thousands of alumni making a difference in global healthcare.</p>
             </div>
           </div>

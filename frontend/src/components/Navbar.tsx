@@ -10,8 +10,11 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
+  // Next.js App Router pattern for closing menus on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setMobileMenuOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setActiveDropdown(null);
   }, [pathname]);
 
@@ -44,7 +47,7 @@ export default function Navbar() {
             <span className={styles.divider}>|</span>
             <Link href="/contact">CONTACT US</Link>
             <span className={styles.divider}>|</span>
-            <Link href="/admission/apply" className={styles.applyBtnTop}>APPLY ONLINE</Link>
+            <Link href="/admission/apply" className={styles.applyBtnTop}>ENQUIRE NOW</Link>
           </div>
         </div>
       </div>
@@ -122,7 +125,7 @@ export default function Navbar() {
                 <li><Link href="/admission/procedure">Admission Procedure</Link></li>
                 <li><Link href="/admission/merit-list">Merit List for Admission</Link></li>
                 <li><Link href="/admission/fees">Fees Structure</Link></li>
-                <li><Link href="/admission/apply">Apply Online</Link></li>
+                <li><Link href="/admission/apply">Enquire Now</Link></li>
                 <li><Link href="/admission/prospectus">Prospectus</Link></li>
                 <li><Link href="/admission/bank-details">Bank Details</Link></li>
               </ul>
@@ -149,7 +152,7 @@ export default function Navbar() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevron}><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
               <ul className={styles.dropdownMenu}>
-                <li><Link href="/staff/principal">Principal's Profile</Link></li>
+                <li><Link href="/staff/principal">Principal&apos;s Profile</Link></li>
                 <li><Link href="/staff/faculty">Core Faculty</Link></li>
                 <li><Link href="/staff/guest-lecturers">Guest Lecturers</Link></li>
                 <li><Link href="/staff/administration">Administration</Link></li>

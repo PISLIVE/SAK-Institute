@@ -1,5 +1,6 @@
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
+import AnimatedCounter from '@/components/AnimatedCounter';
 import styles from './About.module.css';
 
 export const metadata = {
@@ -32,19 +33,19 @@ export default function AboutPage() {
             
             <div className={styles.statsGrid}>
               <div className={styles.statBox}>
-                <span className={styles.statNumber}>15+</span>
+                <span className={styles.statNumber}><AnimatedCounter target={15} suffix="+" /></span>
                 <span className={styles.statLabel}>Years of Trust</span>
               </div>
               <div className={styles.statBox}>
-                <span className={styles.statNumber}>100%</span>
+                <span className={styles.statNumber}><AnimatedCounter target={100} suffix="%" /></span>
                 <span className={styles.statLabel}>Placement Assistance</span>
               </div>
               <div className={styles.statBox}>
-                <span className={styles.statNumber}>50+</span>
+                <span className={styles.statNumber}><AnimatedCounter target={50} suffix="+" /></span>
                 <span className={styles.statLabel}>Expert Faculty</span>
               </div>
               <div className={styles.statBox}>
-                <span className={styles.statNumber}>2000+</span>
+                <span className={styles.statNumber}><AnimatedCounter target={2000} suffix="+" duration={2500} /></span>
                 <span className={styles.statLabel}>Alumni Nurses</span>
               </div>
             </div>
@@ -64,14 +65,14 @@ export default function AboutPage() {
       <section className={styles.missionVisionSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenterLight}>
-            <h2>Our Guiding Principles</h2>
+            <h2 className="animate-on-load">Our Guiding Principles</h2>
             <p>The foundation of our educational philosophy and institutional culture.</p>
           </div>
           
           <div className={styles.cardGrid}>
             <div className={`glass-panel ${styles.missionCard}`}>
               <div className={styles.iconWrapper}>🎯</div>
-              <h3>Our Mission</h3>
+              <h3 className="animate-on-load">Our Mission</h3>
               <p>
                 To provide accessible, high-quality nursing education that fosters clinical excellence, 
                 critical thinking, and a lifelong commitment to patient care and community health.
@@ -80,7 +81,7 @@ export default function AboutPage() {
             
             <div className={`glass-panel ${styles.missionCard}`}>
               <div className={styles.iconWrapper}>👁️</div>
-              <h3>Our Vision</h3>
+              <h3 className="animate-on-load">Our Vision</h3>
               <p>
                 To be a globally recognized center of excellence in nursing education and research, 
                 shaping leaders who will transform the healthcare landscape.
@@ -89,7 +90,7 @@ export default function AboutPage() {
             
             <div className={`glass-panel ${styles.missionCard}`}>
               <div className={styles.iconWrapper}>❤️</div>
-              <h3>Core Values</h3>
+              <h3 className="animate-on-load">Core Values</h3>
               <p>
                 Integrity, Compassion, Excellence, Respect, and Accountability form the bedrock of 
                 our institutional culture and educational philosophy.
@@ -102,7 +103,7 @@ export default function AboutPage() {
       {/* 3. Achievements & Milestones */}
       <section className={`container ${styles.achievementsSection}`}>
         <div className={styles.sectionHeaderCenter}>
-          <h2>Achievements & Milestones</h2>
+          <h2 className="animate-on-load">Achievements & Milestones</h2>
           <p>Recognitions that drive us to continuously raise the bar in healthcare education.</p>
         </div>
         
@@ -134,7 +135,7 @@ export default function AboutPage() {
       <section className={styles.campusShowcase}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
-            <h2>A Glimpse of Our Campus</h2>
+            <h2 className="animate-on-load">A Glimpse of Our Campus</h2>
             <p>Explore the vibrant environment where our students learn, grow, and thrive.</p>
           </div>
           
@@ -164,7 +165,7 @@ export default function AboutPage() {
             </div>
             <div className={styles.principalText}>
               <span className={styles.badge}>MESSAGE FROM LEADERSHIP</span>
-              <h3>Dr. Jane Doe</h3>
+              <h3 className="animate-on-load">Dr. Jane Doe</h3>
               <span className={styles.credentials}>Ph.D. in Nursing, M.Sc. Nursing</span>
               <p className={styles.quote}>
                 "Nursing is not just a profession; it is a calling. At SAK College, we are dedicated to 

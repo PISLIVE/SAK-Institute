@@ -12,7 +12,15 @@ export default function GallerySection() {
 
   return (
     <section className={styles.gallerySection}>
-      <div className="container">
+      {/* Aesthetic Sliding Side Text */}
+      <div className={styles.sideTextLeft}>
+        <div className={styles.slidingText}>CLINICAL TRAINING &bull; CAMPUS LIFE &bull; CLINICAL TRAINING &bull; CAMPUS LIFE &bull;</div>
+      </div>
+      <div className={styles.sideTextRight}>
+        <div className={styles.slidingTextReverse}>SAK COLLEGE OF NURSING &bull; EXCELLENCE &bull; SAK COLLEGE OF NURSING &bull; EXCELLENCE &bull;</div>
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className={styles.header}>
           <h2 className={styles.title}>Campus Life & Clinical Training</h2>
           <p className={styles.subtitle}>

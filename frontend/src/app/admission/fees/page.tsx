@@ -11,8 +11,8 @@ export default function FeesStructurePage() {
       <PageHeader title="Fees Structure" breadcrumb="Fees Structure" />
       
       <section className="container" style={{ padding: '4rem 0' }}>
-        <h2 style={{ color: 'var(--primary-color)', marginBottom: '2rem', textAlign: 'center' }}>Program Fees</h2>
-        <div className="glass-panel" style={{ padding: '2rem', overflowX: 'auto' }}>
+        <h2 style={{ color: 'var(--primary-color)', marginBottom: '2rem', textAlign: 'center' }} className="animate-on-load">Program Fees</h2>
+        <div className="glass-panel card-3d" style={{ padding: '2rem', overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid var(--primary-color)' }}>

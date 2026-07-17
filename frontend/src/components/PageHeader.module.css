@@ -1,15 +1,28 @@
 .pageHeader {
   position: relative;
-  height: 250px;
+  height: 280px;
   background-color: var(--primary-color);
-  background-image: url('/gallery11.jpeg'); /* Using the new banner image */
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-bottom: 4rem;
+  overflow: hidden; /* Required for Ken Burns effect */
+}
+
+.bgImage {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/gallery11.jpeg');
+  background-size: cover;
+  background-position: center;
+  animation: kenBurns 20s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
 }
 
 .overlay {
@@ -18,7 +31,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(13, 148, 136, 0.85); /* Heavy teal overlay */
+  background: linear-gradient(to bottom, rgba(13, 148, 136, 0.75), rgba(15, 23, 42, 0.9)); /* Deep teal to slate gradient */
   z-index: 1;
 }
 
@@ -47,11 +60,27 @@
 .breadcrumbs a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.breadcrumbs a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
 }
 
 .breadcrumbs a:hover {
   color: white;
+}
+
+.breadcrumbs a:hover::after {
+  width: 100%;
 }
 
 .separator {

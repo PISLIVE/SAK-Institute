@@ -16,17 +16,17 @@ export default function PediatricDepartmentPage() {
           
           {/* Left Column: About & HOD */}
           <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }}>About the Department</h2>
+            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', fontSize: '2rem' }} className="animate-on-load">About the Department</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
               Child Health (Pediatric) Nursing focuses on the specialized care of infants, children, and adolescents. 
               Our department trains students in pediatric growth and development, neonatal intensive care, and the compassionate management of childhood illnesses.
             </p>
             
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
+            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ fontSize: '3rem' }}>👩‍⚕️</div>
                 <div>
-                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Dr. Emily Chen</h3>
+                  <h3 style={{ color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }} className="animate-on-load">Dr. Emily Chen</h3>
                   <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>Head of Department (HOD)<br/>M.Sc. Pediatric Nursing, 10+ Years Experience</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function PediatricDepartmentPage() {
               />
             </div>
             
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Key Facilities</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Key Facilities</h3>
             <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.2rem', lineHeight: '1.8' }}>
               <li>Dedicated Maternal & Child Health (MCH) Lab</li>
               <li>Infant CPR and Neonatal Resuscitation Models</li>

@@ -26,7 +26,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <div className={styles.icon}>📍</div>
                 <div>
-                  <h3>Campus Address</h3>
+                  <h3 className="animate-on-load">Campus Address</h3>
                   <p>SAK College Campus<br />Guwahati, Assam</p>
                 </div>
               </div>
@@ -34,7 +34,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <div className={styles.icon}>📞</div>
                 <div>
-                  <h3>Call Us</h3>
+                  <h3 className="animate-on-load">Call Us</h3>
                   <p>+91 884330808</p>
                 </div>
               </div>
@@ -42,7 +42,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <div className={styles.icon}>✉️</div>
                 <div>
-                  <h3>Email Us</h3>
+                  <h3 className="animate-on-load">Email Us</h3>
                   <p>info@sakcollege.edu<br />admissions@sakcollege.edu</p>
                 </div>
               </div>
@@ -52,7 +52,7 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className={styles.contactFormWrapper}>
             <div className={styles.formCard}>
-              <h3>Send us a Message</h3>
+              <h3 className="animate-on-load">Send us a Message</h3>
               <form className={styles.contactForm}>
                 <div className={styles.formGroup}>
                   <label htmlFor="name">Full Name</label>

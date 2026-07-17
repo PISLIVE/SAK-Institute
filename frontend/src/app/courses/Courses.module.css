@@ -1,164 +1,205 @@
 .coursesPage {
-  padding-bottom: 6rem;
+  padding-bottom: 8rem;
+  background-color: #f8fafc;
+  position: relative;
 }
 
 .introText {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 5rem;
 }
 
 .introText h2 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
 }
 
 .introText p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
-.programList {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  max-width: 1000px;
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.programCard {
+.courseCard {
   background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
 }
 
-.programCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-  border-color: var(--accent-color);
+.courseCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
 }
 
 .cardHeader {
-  background-color: var(--bg-color);
-  padding: 2rem;
+  padding: 3rem 2rem 2.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 
-.icon {
+.iconWrapper {
+  width: 90px;
+  height: 90px;
   font-size: 3.5rem;
-  background: white;
-  width: 80px;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: white;
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 3px solid;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.programTitle {
-  font-size: 1.75rem;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
+.courseCard:hover .iconWrapper {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.shortTitle {
+  font-size: 2.4rem;
   font-family: var(--font-heading);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
-.duration {
-  color: var(--primary-color);
+.longTitle {
+  font-size: 1.1rem;
   font-weight: 600;
-  font-size: 0.95rem;
+  color: var(--text-secondary);
 }
 
 .cardBody {
-  padding: 2.5rem;
+  padding: 2.5rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.durationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  color: var(--text-secondary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0 auto 2rem;
 }
 
 .description {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-.detailsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  line-height: 1.7;
+  text-align: center;
   margin-bottom: 2.5rem;
 }
 
-.detailBox {
+.infoSection {
   background: #f8fafc;
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  border-left: 4px solid var(--accent-color);
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border-left: 3px solid #cbd5e1;
+  transition: border-color 0.3s ease;
 }
 
-.detailBox h4 {
+.courseCard:hover .infoSection {
+  border-left-color: currentColor;
+}
+
+.infoSection h4 {
+  font-size: 0.9rem;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-.detailBox p {
-  color: var(--text-secondary);
+.infoSection p {
   font-size: 0.95rem;
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin: 0;
 }
 
 .cardFooter {
+  padding: 0 2rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.applyBtn {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e2e8f0;
-}
-
-.enquireLink {
-  color: var(--primary-color);
+  justify-content: center;
+  color: white;
+  padding: 0.9rem;
+  border-radius: 10px;
   font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: 1.05rem;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.enquireLink:hover {
-  color: var(--accent-color);
+.applyBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.enquireBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: 2px solid currentColor;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.enquireBtn:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  .coursesPage {
-    padding-bottom: 3rem;
+  .coursesGrid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
   }
   .introText {
-    margin-bottom: 2rem;
-  }
-  .introText h2 {
-    font-size: 1.8rem;
-  }
-  .cardBody {
-    padding: 1.5rem;
-  }
-  .detailsGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .cardHeader {
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
-  }
-  .cardFooter {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    margin-bottom: 3rem;
   }
 }
