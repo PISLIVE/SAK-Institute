@@ -191,8 +191,8 @@
 
 .lightboxClose {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 10px;
+  right: 15px;
   color: white;
   font-size: 3rem;
   background: none;
@@ -201,6 +201,10 @@
   z-index: 10000;
   transition: transform 0.2s ease, color 0.2s ease;
   line-height: 1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightboxClose:hover {

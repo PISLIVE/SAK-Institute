@@ -111,7 +111,8 @@
   .heroContent { padding: 0 1rem; }
   .title { font-size: 2.5rem; }
   .subtitle { font-size: 1.1rem; }
-  .ctaGroup { flex-direction: column; width: 100%; }
+  .ctaGroup { flex-direction: column; width: 100%; align-items: stretch; }
+  .ctaGroup a, .ctaGroup button { text-align: center; width: 100%; }
 }
 
 @media (max-width: 480px) {
