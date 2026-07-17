@@ -1,7 +1,12 @@
+"use client";
+
 import Image from 'next/image';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './GallerySection.module.css';
 
 export default function GallerySection() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   // Array of image numbers, replacing 8 with 15
   const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 15, 9, 10, 11, 12, 13, 14];
   const galleryImages = imageNumbers.map((num) => ({
@@ -39,7 +44,7 @@ export default function GallerySection() {
             else if (isWide) itemClass += ` ${styles.wide}`;
 
             return (
-              <div key={image.id} className={itemClass}>
+              <div key={image.id} className={itemClass} onClick={() => setSelectedImage(image.src)}>
                 <Image 
                   src={image.src} 
                   alt={image.alt} 
@@ -49,13 +54,30 @@ export default function GallerySection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className={styles.overlay}>
-                  <span>SAK College Life</span>
+                  <span>SAK College Life 🔍</span>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {selectedImage && typeof document !== 'undefined' && createPortal(
+        <div className={styles.lightbox} onClick={() => setSelectedImage(null)}>
+          <button className={styles.lightboxClose} onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}>
+            &times;
+          </button>
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <Image 
+              src={selectedImage} 
+              alt="Fullscreen view" 
+              fill 
+              style={{ objectFit: 'contain' }} 
+            />
+          </div>
+        </div>,
+        document.body
+      )}
     </section>
   );
 }

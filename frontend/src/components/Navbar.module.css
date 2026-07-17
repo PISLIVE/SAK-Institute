@@ -2,8 +2,14 @@
   width: 100%;
   background: white;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.headerScrolled {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 /* Top Bar */
@@ -11,6 +17,13 @@
   background-color: #1e293b; /* Dark slate */
   color: #94a3b8;
   font-size: 0.8rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.headerScrolled .topBar {
+  height: 0;
+  opacity: 0;
 }
 
 .topBarContainer {
@@ -139,6 +152,12 @@
 /* Main Navigation */
 .mainNav {
   background-color: var(--primary-color); /* Teal medical color */
+  transition: all 0.3s ease;
+}
+
+.headerScrolled .mainNav {
+  background-color: rgba(13, 148, 136, 0.85);
+  backdrop-filter: blur(12px);
 }
 
 .navContainer {

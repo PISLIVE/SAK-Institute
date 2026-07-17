@@ -47,6 +47,15 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+
+            <div className={styles.socialFollow}>
+              <h3>Follow Our Journey</h3>
+              <div className={styles.socialIcons}>
+                <a href="#" className={styles.socialBtn}>Facebook</a>
+                <a href="#" className={styles.socialBtn}>Twitter</a>
+                <a href="#" className={styles.socialBtn}>Instagram</a>
+              </div>
+            </div>
           </div>
 
           {/* Contact Form */}
