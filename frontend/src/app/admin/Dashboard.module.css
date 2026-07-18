@@ -85,3 +85,17 @@
   line-height: 1.6;
   font-size: 1.05rem;
 }
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.8rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .welcomeCard {
+    padding: 1.5rem;
+  }
+}

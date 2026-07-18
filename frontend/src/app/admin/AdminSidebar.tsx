@@ -1,15 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import styles from './AdminSidebar.module.css';
-import { FaTachometerAlt, FaBullhorn, FaEnvelope, FaFileAlt, FaSignOutAlt, FaCog, FaBook, FaUsers, FaImages, FaUserShield } from 'react-icons/fa';
+import { FaTachometerAlt, FaBullhorn, FaEnvelope, FaFileAlt, FaSignOutAlt, FaCog, FaBook, FaUsers, FaImages, FaUserShield, FaBars, FaTimes } from 'react-icons/fa';
 
 export default function AdminSidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   if (pathname === '/admin/login') return null;
 
@@ -31,37 +33,57 @@ export default function AdminSidebar() {
     }
   };
 
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   return (
-    <div className={`${styles.sidebar} no-print`}>
-      <div className={styles.logo}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-          <Image src="/sak-logo.png" alt="SAK College Logo" width={80} height={80} style={{ objectFit: 'contain' }} />
+    <>
+      {/* Mobile Menu Toggle Button */}
+      <button className={`${styles.mobileToggleBtn} no-print`} onClick={toggleMobileMenu} aria-label="Toggle Menu">
+        <FaBars />
+      </button>
+
+      {/* Mobile Backdrop Overlay */}
+      {isMobileMenuOpen && (
+        <div className={`${styles.mobileBackdrop} no-print`} onClick={() => setIsMobileMenuOpen(false)} />
+      )}
+
+      <div className={`${styles.sidebar} ${isMobileMenuOpen ? styles.open : ''} no-print`}>
+        <div className={styles.mobileCloseBtnWrapper}>
+           <button className={styles.mobileCloseBtn} onClick={() => setIsMobileMenuOpen(false)}>
+             <FaTimes />
+           </button>
         </div>
-        <h2>SAK Admin</h2>
-        <p>Welcome, {session?.user?.name || 'Admin'}</p>
-      </div>
-      <nav className={styles.nav}>
-        {navItems.map((item) => (
-          <Link 
-            key={item.path} 
-            href={item.path}
-            className={`${styles.navItem} ${pathname === item.path ? styles.active : ''}`}
-          >
-            <span className={styles.icon}>{item.icon}</span>
-            {item.name}
-          </Link>
-        ))}
-      </nav>
-      
-      <div className={styles.sidebarFooter}>
-        <button onClick={handleLogout} className={styles.logoutBtn}>
-          <FaSignOutAlt /> Logout
-        </button>
-        <div className={styles.copyright}>
-          &copy; {new Date().getFullYear()} SAK College.
-          <br />All rights reserved.
+        <div className={styles.logo}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+            <Image src="/sak-logo.png" alt="SAK College Logo" width={80} height={80} style={{ objectFit: 'contain' }} />
+          </div>
+          <h2>SAK Admin</h2>
+          <p>Welcome, {session?.user?.name || 'Admin'}</p>
+        </div>
+        <nav className={styles.nav}>
+          {navItems.map((item) => (
+            <Link 
+              key={item.path} 
+              href={item.path}
+              className={`${styles.navItem} ${pathname === item.path ? styles.active : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className={styles.icon}>{item.icon}</span>
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+        
+        <div className={styles.sidebarFooter}>
+          <button onClick={handleLogout} className={styles.logoutBtn}>
+            <FaSignOutAlt /> Logout
+          </button>
+          <div className={styles.copyright}>
+            &copy; {new Date().getFullYear()} SAK College.
+            <br />All rights reserved.
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

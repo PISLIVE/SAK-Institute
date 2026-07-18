@@ -172,3 +172,84 @@
   position: relative;
   z-index: 2;
 }
+
+/* Mobile Toggle Button */
+.mobileToggleBtn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 60;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileCloseBtnWrapper {
+  display: none;
+  justify-content: flex-end;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.mobileCloseBtn {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* Mobile Backdrop */
+.mobileBackdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  z-index: 40;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobileToggleBtn {
+    display: flex;
+  }
+
+  .mobileCloseBtnWrapper {
+    display: flex;
+  }
+
+  .mobileBackdrop {
+    display: block;
+  }
+
+  .adminMain {
+    margin-left: 0;
+    padding: 4rem 1rem 1rem 1rem; /* Extra top padding for toggle button */
+  }
+
+  .adminMain::before {
+    left: 50%;
+  }
+}
