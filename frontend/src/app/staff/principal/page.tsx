@@ -11,9 +11,9 @@ export default function PrincipalPage() {
     <main>
       <PageHeader title="Principal's Profile" breadcrumb="Staff / Principal" />
       <section className="container" style={{ padding: '4rem 0 6rem 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '4rem', alignItems: 'start' }}>
+        <div className="responsive-grid-1-2" style={{ alignItems: 'start' }}>
           
-          <div style={{ position: 'relative', height: '400px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+          <div style={{ position: 'relative', minHeight: '350px', height: '100%', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
             <Image 
               src="/gallery7.jpeg" 
               alt="Principal Profile" 

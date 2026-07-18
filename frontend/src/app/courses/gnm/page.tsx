@@ -1,4 +1,7 @@
 import PageHeader from '@/components/PageHeader';
+import Link from 'next/link';
+import { FaClock, FaUsers, FaGraduationCap, FaCheckCircle, FaFileAlt } from 'react-icons/fa';
+import styles from '../CourseDetail.module.css';
 
 export const metadata = {
   title: 'GNM | Courses Offered',
@@ -9,37 +12,70 @@ export default function GNMPage() {
   return (
     <main>
       <PageHeader title="General Nursing & Midwifery (GNM)" breadcrumb="Courses / GNM" />
-      <section className="container" style={{ padding: '4rem 0 6rem 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
-          <div>
-            <h2 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '2rem' }} className="animate-on-load">Program Overview</h2>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', marginBottom: '2rem' }}>
-              The GNM program is designed to prepare general nurses who will function as members of the health team beginning with consultancies for first-level positions in both hospitals and community health environments.
-            </p>
-            <div className="glass-panel card-3d" style={{ padding: '2rem', borderLeft: '4px solid var(--accent-color)' }}>
-              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Eligibility Criteria</h3>
-              <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.6', paddingLeft: '1.2rem' }}>
-                <li>10+2 with English and must have obtained a minimum of 40% at the qualifying examination.</li>
-                <li>Candidates are also eligible from State Open School recognized by State Government and National Institute of Open School (NIOS).</li>
-                <li>Minimum age for admission will be 17 years.</li>
+      <section className={styles.container}>
+        <div className={styles.gridContainer}>
+          <div className="animate-on-load">
+            <div className={styles.contentSection}>
+              <h2 className={styles.sectionTitle}>
+                <FaFileAlt style={{ color: 'var(--accent-color)' }} /> Program Overview
+              </h2>
+              <p className={styles.overviewText}>
+                The GNM program is designed to prepare general nurses who will function as members of the health team beginning with consultancies for first-level positions in both hospitals and community health environments.
+              </p>
+            </div>
+
+            <div className={styles.contentSection}>
+              <h2 className={styles.sectionTitle}>
+                <FaCheckCircle style={{ color: 'var(--accent-color)' }} /> Eligibility Criteria
+              </h2>
+              <ul className={styles.eligibilityList}>
+                <li className={styles.eligibilityItem}>
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>10+2 with English and must have obtained a minimum of 40% at the qualifying examination.</span>
+                </li>
+                <li className={styles.eligibilityItem}>
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>Candidates are also eligible from State Open School recognized by State Government and National Institute of Open School (NIOS).</span>
+                </li>
+                <li className={styles.eligibilityItem}>
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>Minimum age for admission will be 17 years.</span>
+                </li>
               </ul>
             </div>
           </div>
-          <div>
-            <div className="glass-panel card-3d" style={{ padding: '2rem', background: 'var(--primary-color)', color: 'white' }}>
-              <h3 style={{ marginBottom: '1.5rem', color: 'white' }} className="animate-on-load">Course Highlights</h3>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontWeight: 600 }}>Duration</span>
-                <span>3 Years</span>
+
+          <div className="animate-on-load" style={{ animationDelay: '0.2s' }}>
+            <div className={styles.sidebarCard}>
+              <h3 className={styles.sidebarTitle}>Course Highlights</h3>
+              
+              <div className={styles.highlightItem}>
+                <div className={styles.iconBox}><FaClock /></div>
+                <div className={styles.highlightText}>
+                  <span className={styles.highlightLabel}>Duration</span>
+                  <span className={styles.highlightValue}>3 Years</span>
+                </div>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontWeight: 600 }}>Intake Capacity</span>
-                <span>60 Seats</span>
+
+              <div className={styles.highlightItem}>
+                <div className={styles.iconBox}><FaUsers /></div>
+                <div className={styles.highlightText}>
+                  <span className={styles.highlightLabel}>Intake Capacity</span>
+                  <span className={styles.highlightValue}>60 Seats</span>
+                </div>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontWeight: 600 }}>Mode</span>
-                <span>Full-Time, On-Campus</span>
+
+              <div className={styles.highlightItem}>
+                <div className={styles.iconBox}><FaGraduationCap /></div>
+                <div className={styles.highlightText}>
+                  <span className={styles.highlightLabel}>Mode</span>
+                  <span className={styles.highlightValue}>Full-Time, On-Campus</span>
+                </div>
               </div>
+
+              <Link href="/admission/online-application" target="_blank" rel="noopener noreferrer" className={styles.applyButton}>
+                Apply for this Course
+              </Link>
             </div>
           </div>
         </div>

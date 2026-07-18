@@ -1,0 +1,137 @@
+.container {
+  padding: 5rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+.tableWrapper {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+  margin-bottom: 3rem;
+  animation: tableFadeIn 0.6s ease forwards;
+}
+
+@keyframes tableFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feesTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.feesTable thead {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.feesTable th {
+  padding: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.feesTable td {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+
+.feesTable tbody tr {
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.feesTable tbody tr:hover {
+  background-color: #f8fafc;
+  box-shadow: inset 4px 0 0 var(--accent-color);
+}
+
+.feesTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.programCol {
+  min-width: 250px;
+}
+
+.programName {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.durationBadge {
+  display: inline-block;
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--accent-color);
+  padding: 0.2rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.amount {
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.currency {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.note {
+  background: linear-gradient(to right, #f8fafc, #f1f5f9);
+  padding: 2rem;
+  border-radius: 16px;
+  border-left: 4px solid var(--accent-color);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+@media (max-width: 768px) {
+  .tableWrapper {
+    overflow-x: auto;
+  }
+  .feesTable th, .feesTable td {
+    padding: 1rem;
+    min-width: 150px;
+  }
+  .programCol {
+    min-width: 200px;
+  }
+}

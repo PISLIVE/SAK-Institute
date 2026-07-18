@@ -1,21 +1,84 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './ApplicationForm.module.css';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function ApplicationForm() {
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [appId, setAppId] = useState<string>('');
+  const receiptRef = useRef<HTMLDivElement>(null);
+
+  // Form State
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    dob: '',
+    gender: '',
+    qualification: '',
+    stream: '',
+    percentage: '',
+    passingYear: '',
+    institution: '',
+    course: '',
+    source: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleNext = () => setStep(prev => Math.min(prev + 1, 3));
   const handlePrev = () => setStep(prev => Math.max(prev - 1, 1));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => {
-      setStatus('success');
-    }, 2000);
+
+    try {
+      const response = await fetch('/api/application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      if (response.ok) {
+        setAppId(data.applicationId);
+        setStatus('success');
+      } else {
+        alert('Failed to submit application. Please try again.');
+        setStatus('idle');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred. Please try again later.');
+      setStatus('idle');
+    }
+  };
+
+  const downloadReceipt = async () => {
+    if (!receiptRef.current) return;
+    
+    try {
+      const canvas = await html2canvas(receiptRef.current, { scale: 2 });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [canvas.width, canvas.height]
+      });
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save(`SAK_Application_${appId}.pdf`);
+    } catch (error) {
+      console.error('Failed to generate PDF', error);
+      alert('Could not download receipt. Please try again.');
+    }
   };
 
   if (status === 'success') {
@@ -25,8 +88,46 @@ export default function ApplicationForm() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
         <h2>Application Submitted Successfully!</h2>
-        <p>Your application ID is <strong>SAK-{Math.floor(Math.random() * 90000) + 10000}</strong>. We have sent a confirmation email to you. Our admissions team will review your application and contact you soon.</p>
-        <button onClick={() => { setStatus('idle'); setStep(1); }} className="btn-primary" style={{ marginTop: '2rem' }}>Submit Another Application</button>
+        <p>Your application ID is <strong>{appId}</strong>. We have sent a confirmation email to you. Our admissions team will review your application and contact you soon.</p>
+        
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+          <button onClick={downloadReceipt} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Receipt
+          </button>
+          <button onClick={() => { setStatus('idle'); setStep(1); setFormData({...formData, course: ''}); }} className={styles.btnOutline}>Submit Another</button>
+        </div>
+
+        {/* Hidden Receipt for PDF Generation */}
+        <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
+          <div ref={receiptRef} style={{ width: '800px', padding: '40px', background: 'white', color: 'black', fontFamily: 'sans-serif' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '2px solid #0d9488', paddingBottom: '20px', marginBottom: '20px' }}>
+              <div>
+                <h1 style={{ color: '#0d9488', margin: 0 }}>SAK College of Nursing</h1>
+                <p style={{ margin: '5px 0 0 0', color: '#666' }}>Guwahati, Assam</p>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <h2 style={{ margin: 0, color: '#333' }}>Application Receipt</h2>
+                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold' }}>ID: {appId}</p>
+                <p style={{ margin: '5px 0 0 0', color: '#666' }}>Date: {new Date().toLocaleDateString()}</p>
+              </div>
+            </div>
+            
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+              <tbody>
+                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Applicant Name:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.firstName} {formData.lastName}</td></tr>
+                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Course Applied For:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee', fontWeight: 'bold', color: '#0d9488' }}>{formData.course.toUpperCase()}</td></tr>
+                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Email Address:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.email}</td></tr>
+                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Phone Number:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.phone}</td></tr>
+              </tbody>
+            </table>
+            
+            <div style={{ marginTop: '40px', textAlign: 'center', color: '#666', fontSize: '0.9em' }}>
+              <p>This is an electronically generated receipt and does not require a physical signature.</p>
+              <p>Please keep this receipt for your records.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -58,27 +159,27 @@ export default function ApplicationForm() {
             <div className={styles.grid2}>
               <div className={styles.inputGroup}>
                 <label>First Name</label>
-                <input type="text" required placeholder="User" maxLength={50} pattern="^[a-zA-Z\s]+$" title="Only letters and spaces allowed" />
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required placeholder="User" maxLength={50} pattern="^[a-zA-Z\s]+$" title="Only letters and spaces allowed" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Last Name</label>
-                <input type="text" required placeholder="Name" maxLength={50} pattern="^[a-zA-Z\s]+$" title="Only letters and spaces allowed" />
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required placeholder="Name" maxLength={50} pattern="^[a-zA-Z\s]+$" title="Only letters and spaces allowed" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Email Address</label>
-                <input type="email" required placeholder="user@example.com" />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="user@example.com" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Phone Number</label>
-                <input type="tel" required placeholder="+91 1234567891" maxLength={15} pattern="^\+?[0-9\s\-]{10,15}$" title="Enter a valid 10 to 15 digit phone number" />
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+91 1234567891" maxLength={15} pattern="^\+?[0-9\s\-]{10,15}$" title="Enter a valid 10 to 15 digit phone number" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Date of Birth</label>
-                <input type="date" required min="1970-01-01" max="2008-12-31" title="Must be at least 17 years of age" />
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} required min="1970-01-01" max="2008-12-31" title="Must be at least 17 years of age" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Gender</label>
-                <select required defaultValue="">
+                <select name="gender" value={formData.gender} onChange={handleChange} required>
                   <option value="" disabled>Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -95,7 +196,7 @@ export default function ApplicationForm() {
             <div className={styles.grid2}>
               <div className={styles.inputGroup}>
                 <label>Highest Qualification</label>
-                <select required defaultValue="">
+                <select name="qualification" value={formData.qualification} onChange={handleChange} required>
                   <option value="" disabled>Select Qualification</option>
                   <option value="12th">10+2 / Higher Secondary</option>
                   <option value="bachelor">Bachelor's Degree</option>
@@ -104,20 +205,20 @@ export default function ApplicationForm() {
               </div>
               <div className={styles.inputGroup}>
                 <label>Stream / Major</label>
-                <input type="text" required placeholder="e.g. Science (PCB)" />
+                <input type="text" name="stream" value={formData.stream} onChange={handleChange} required placeholder="e.g. Science (PCB)" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Percentage / CGPA</label>
-                <input type="text" required placeholder="e.g. 85%" />
+                <input type="text" name="percentage" value={formData.percentage} onChange={handleChange} required placeholder="e.g. 85%" />
               </div>
               <div className={styles.inputGroup}>
                 <label>Passing Year</label>
-                <input type="number" required placeholder="2023" min="2010" max="2026" />
+                <input type="number" name="passingYear" value={formData.passingYear} onChange={handleChange} required placeholder="2023" min="2010" max="2026" />
               </div>
             </div>
             <div className={styles.inputGroup} style={{ marginTop: '1.5rem' }}>
               <label>School / College Name</label>
-              <input type="text" required placeholder="Name of previous institution" />
+              <input type="text" name="institution" value={formData.institution} onChange={handleChange} required placeholder="Name of previous institution" />
             </div>
           </div>
         )}
@@ -128,7 +229,7 @@ export default function ApplicationForm() {
             <div className={styles.grid1}>
               <div className={styles.inputGroup}>
                 <label>Program Applying For</label>
-                <select required defaultValue="">
+                <select name="course" value={formData.course} onChange={handleChange} required>
                   <option value="" disabled>Select a Program</option>
                   <option value="gnm">General Nursing & Midwifery (GNM)</option>
                   <option value="bsc">Basic B.Sc. Nursing</option>
@@ -138,7 +239,7 @@ export default function ApplicationForm() {
               </div>
               <div className={styles.inputGroup}>
                 <label>How did you hear about us?</label>
-                <select required defaultValue="">
+                <select name="source" value={formData.source} onChange={handleChange} required>
                   <option value="" disabled>Select an option</option>
                   <option value="google">Google Search</option>
                   <option value="social">Social Media</option>

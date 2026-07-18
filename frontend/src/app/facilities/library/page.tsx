@@ -11,8 +11,8 @@ export default function LibraryPage() {
     <main>
       <PageHeader title="Central Library" breadcrumb="Facilities / Library" />
       <section className="container" style={{ padding: '4rem 0 6rem 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '4rem', alignItems: 'start' }}>
-          <div style={{ position: 'relative', height: '400px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+        <div className="responsive-grid-1-2" style={{ alignItems: 'start' }}>
+          <div style={{ position: 'relative', minHeight: '350px', height: '100%', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
             <Image 
               src="/gallery8.jpeg" 
               alt="Central Library" 
@@ -27,7 +27,7 @@ export default function LibraryPage() {
             </p>
             <div className="glass-panel card-3d" style={{ padding: '2rem' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }} className="animate-on-load">Library Resources</h3>
-              <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.6', paddingLeft: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <ul className="responsive-grid-2" style={{ color: 'var(--text-secondary)', lineHeight: '1.6', paddingLeft: '1.2rem', gap: '1rem' }}>
                 <li>10,000+ Reference Books</li>
                 <li>National & International Journals</li>
                 <li>Digital Library (E-books & E-journals)</li>

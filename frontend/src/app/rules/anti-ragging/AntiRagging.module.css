@@ -1,0 +1,123 @@
+.container {
+  padding: 4rem 1rem 6rem;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.policyCard {
+  background: white;
+  border-radius: 24px;
+  padding: 3.5rem;
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.policyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(239, 68, 68, 0.15);
+}
+
+.topBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #ef4444, #b91c1c);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.iconBox {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  background: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: #ef4444;
+  animation: pulseWarning 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulseWarning {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+  }
+}
+
+.title {
+  color: #b91c1c;
+  font-size: 2.4rem;
+  margin: 0 0 0.3rem 0;
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+}
+
+.actionBox {
+  background: linear-gradient(to right, #fef2f2, #fff1f2);
+  padding: 2rem;
+  border-radius: 16px;
+  color: #991b1b;
+  margin-bottom: 3rem;
+  border-left: 5px solid #ef4444;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.sectionTitle {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-heading);
+}
+
+.committeeText {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .policyCard {
+    padding: 2.5rem 1.5rem;
+  }
+  .headerRow {
+    flex-direction: column;
+    text-align: center;
+  }
+  .title {
+    font-size: 2rem;
+  }
+}

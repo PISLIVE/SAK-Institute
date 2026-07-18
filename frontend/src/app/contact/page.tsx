@@ -1,5 +1,7 @@
 import PageHeader from '@/components/PageHeader';
 import styles from './Contact.module.css';
+import ContactForm from './ContactForm';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export const metadata = {
   title: 'Contact Us | SAK College of Nursing',
@@ -24,7 +26,9 @@ export default function ContactPage() {
 
             <div className={styles.infoCards}>
               <div className={styles.infoCard}>
-                <div className={styles.icon}>📍</div>
+                <div className={styles.icon}>
+                  <FaMapMarkerAlt />
+                </div>
                 <div>
                   <h3 className="animate-on-load">Campus Address</h3>
                   <p>SAK College Campus<br />Guwahati, Assam</p>
@@ -32,15 +36,19 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.infoCard}>
-                <div className={styles.icon}>📞</div>
+                <div className={styles.icon}>
+                  <FaPhoneAlt />
+                </div>
                 <div>
                   <h3 className="animate-on-load">Call Us</h3>
-                  <p>+91 884330808</p>
+                  <p>+91 8884330808</p>
                 </div>
               </div>
 
               <div className={styles.infoCard}>
-                <div className={styles.icon}>✉️</div>
+                <div className={styles.icon}>
+                  <FaEnvelope />
+                </div>
                 <div>
                   <h3 className="animate-on-load">Email Us</h3>
                   <p>info@sakcollege.edu<br />admissions@sakcollege.edu</p>
@@ -51,54 +59,16 @@ export default function ContactPage() {
             <div className={styles.socialFollow}>
               <h3>Follow Our Journey</h3>
               <div className={styles.socialIcons}>
-                <a href="#" className={styles.socialBtn}>Facebook</a>
-                <a href="#" className={styles.socialBtn}>Twitter</a>
-                <a href="#" className={styles.socialBtn}>Instagram</a>
+                <a href="#" className={styles.socialBtn}><FaFacebookF style={{ marginRight: '6px' }}/> Facebook</a>
+                <a href="#" className={styles.socialBtn}><FaTwitter style={{ marginRight: '6px' }}/> Twitter</a>
+                <a href="#" className={styles.socialBtn}><FaInstagram style={{ marginRight: '6px' }}/> Instagram</a>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form Component */}
           <div className={styles.contactFormWrapper}>
-            <div className={styles.formCard}>
-              <h3 className="animate-on-load">Send us a Message</h3>
-              <form className={styles.contactForm}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Full Name</label>
-                  <input type="text" id="name" placeholder="John Doe" required />
-                </div>
-
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="email">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" required />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="+91 98765 43210" required />
-                  </div>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="subject">Subject</label>
-                  <select id="subject" required>
-                    <option value="">Select an option</option>
-                    <option value="admission">Admission Inquiry</option>
-                    <option value="courses">Course Information</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="message">Message</label>
-                  <textarea id="message" rows={5} placeholder="How can we help you?" required></textarea>
-                </div>
-
-                <button type="submit" className="btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }}>
-                  Send Message
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
 
         </div>

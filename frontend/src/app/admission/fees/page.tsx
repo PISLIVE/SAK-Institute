@@ -1,55 +1,96 @@
 import PageHeader from '@/components/PageHeader';
+import styles from './Fees.module.css';
+import { FaInfoCircle } from 'react-icons/fa';
 
 export const metadata = {
   title: 'Fees Structure | SAK College of Nursing',
   description: 'View the fee structure for various nursing programs at SAK College of Nursing.',
 };
 
+const programs = [
+  {
+    id: 1,
+    name: "GNM (General Nursing)",
+    duration: "3 Years",
+    admissionFee: "--,---",
+    tuitionFee: "--,---"
+  },
+  {
+    id: 2,
+    name: "B.Sc. Nursing",
+    duration: "4 Years",
+    admissionFee: "--,---",
+    tuitionFee: "--,---"
+  },
+  {
+    id: 3,
+    name: "Post Basic B.Sc. Nursing",
+    duration: "2 Years",
+    admissionFee: "--,---",
+    tuitionFee: "--,---"
+  },
+  {
+    id: 4,
+    name: "M.Sc. Nursing",
+    duration: "2 Years",
+    admissionFee: "--,---",
+    tuitionFee: "--,---"
+  }
+];
+
 export default function FeesStructurePage() {
   return (
     <main>
       <PageHeader title="Fees Structure" breadcrumb="Fees Structure" />
       
-      <section className="container" style={{ padding: '4rem 0' }}>
-        <h2 style={{ color: 'var(--primary-color)', marginBottom: '2rem', textAlign: 'center' }} className="animate-on-load">Program Fees</h2>
-        <div className="glass-panel card-3d" style={{ padding: '2rem', overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+      <section className={styles.container}>
+        <h2 className={`animate-on-load ${styles.title}`}>Program Fees</h2>
+        <p className={`animate-on-load ${styles.subtitle}`}>Transparent and comprehensive fee structures for all our nursing programs.</p>
+        
+        <div className={styles.tableWrapper}>
+          <table className={styles.feesTable}>
             <thead>
-              <tr style={{ borderBottom: '2px solid var(--primary-color)' }}>
-                <th style={{ padding: '1rem', color: 'var(--text-primary)' }}>Program Name</th>
-                <th style={{ padding: '1rem', color: 'var(--text-primary)' }}>Duration</th>
-                <th style={{ padding: '1rem', color: 'var(--text-primary)' }}>Admission Fee (1st Year)</th>
-                <th style={{ padding: '1rem', color: 'var(--text-primary)' }}>Tuition Fee (Per Year)</th>
+              <tr>
+                <th className={styles.programCol}>Program Details</th>
+                <th>Admission Fee <span style={{ fontSize: '0.8rem', opacity: 0.8 }}><br/>(1st Year)</span></th>
+                <th>Tuition Fee <span style={{ fontSize: '0.8rem', opacity: 0.8 }}><br/>(Per Year)</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                <td style={{ padding: '1rem' }}>GNM (General Nursing)</td>
-                <td style={{ padding: '1rem' }}>3 Years</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                <td style={{ padding: '1rem' }}>B.Sc. Nursing</td>
-                <td style={{ padding: '1rem' }}>4 Years</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                <td style={{ padding: '1rem' }}>Post Basic B.Sc. Nursing</td>
-                <td style={{ padding: '1rem' }}>2 Years</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '1rem' }}>M.Sc. Nursing</td>
-                <td style={{ padding: '1rem' }}>2 Years</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-                <td style={{ padding: '1rem' }}>₹ --,---</td>
-              </tr>
+              {programs.map((prog) => (
+                <tr key={prog.id}>
+                  <td className={styles.programCol}>
+                    <span className={styles.programName}>{prog.name}</span>
+                    <span className={styles.durationBadge}>{prog.duration}</span>
+                  </td>
+                  <td>
+                    <span className={styles.amount}>
+                      <span className={styles.currency}>₹</span> {prog.admissionFee}
+                    </span>
+                  </td>
+                  <td>
+                    <span className={styles.amount}>
+                      <span className={styles.currency}>₹</span> {prog.tuitionFee}
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
-          <p style={{ marginTop: '2rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>* Note: Fees are subject to change based on university guidelines. Hostel and transport fees are charged separately.</p>
+        </div>
+
+        <div className={styles.note}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+            <FaInfoCircle style={{ color: 'var(--accent-color)', fontSize: '1.4rem', marginTop: '0.1rem', flexShrink: 0 }} />
+            <div>
+              <strong style={{ color: 'var(--text-primary)', fontSize: '1.1rem' }}>Important Note:</strong>
+              <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
+                Fees are subject to change based on university guidelines and government regulations. 
+                Hostel accommodation, mess charges, and transportation fees are charged separately 
+                and are not included in the tuition fees shown above.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>

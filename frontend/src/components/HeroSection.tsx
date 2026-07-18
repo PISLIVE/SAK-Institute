@@ -17,7 +17,7 @@ export default function HeroSection() {
           <Link href="/about" className={styles.btnSecondary}>Discover SAK</Link>
         </div>
         <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-          <Link href="/admission/online-application" className="btn-primary" style={{ background: 'var(--secondary-color)', boxShadow: '0 4px 15px rgba(2, 132, 199, 0.4)', padding: '0.85rem 2.5rem', fontSize: '1.1rem' }}>Apply Now</Link>
+          <Link href="/admission/online-application" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: 'var(--secondary-color)', boxShadow: '0 4px 15px rgba(2, 132, 199, 0.4)', padding: '0.85rem 2.5rem', fontSize: '1.1rem' }}>Apply Now</Link>
         </div>
       </div>
       
