@@ -37,27 +37,21 @@ export default function SplashScreen() {
           <Image 
             src="/sak-logo.png" 
             alt="SAK College Logo" 
-            width={120} 
-            height={140} 
+            width={140} 
+            height={160} 
             className={styles.logo}
             style={{ objectFit: 'contain' }}
             priority
           />
-          <div className={styles.pulseRing}></div>
-          <div className={styles.pulseRing2}></div>
         </div>
         
         <h2 className={styles.brandName}>
-          <span className={styles.textGradient}>SAK Group of Institutions</span>
+          <span className={styles.textGradient}>SAK College of Nursing</span>
         </h2>
         
         <div className={styles.loadingWrapper}>
-          <div className={styles.loadingBarContainer}>
-            <div className={styles.loadingBar}>
-              <div className={styles.loadingGlow}></div>
-            </div>
-          </div>
-          <p className={styles.loadingText}>Initializing...</p>
+          <div className={styles.pulseDot}></div>
+          <p className={styles.loadingText}>Preparing your experience...</p>
         </div>
       </div>
     </div>

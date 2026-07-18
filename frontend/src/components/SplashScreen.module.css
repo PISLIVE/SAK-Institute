@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #f8fafc;
+  background: #f8fafc; /* Light calm slate background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,31 +17,31 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: scale(1.02);
+  transform: scale(1.05);
   transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Background glowing orbs */
 .bgGlow1, .bgGlow2 {
   position: absolute;
-  width: 45vw;
-  height: 45vw;
+  width: 50vw;
+  height: 50vw;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
   z-index: 1;
-  opacity: 0.12;
+  opacity: 0.15;
   animation: floatOrb 12s ease-in-out infinite alternate;
 }
 
 .bgGlow1 {
-  background: var(--primary-color, #0d9488);
-  top: -15%;
+  background: #2dd4bf; /* Teal glow */
+  top: -20%;
   left: -10%;
 }
 
 .bgGlow2 {
-  background: var(--secondary-color, #2563eb);
-  bottom: -15%;
+  background: #38bdf8; /* Sky blue glow */
+  bottom: -20%;
   right: -10%;
   animation-delay: -6s;
 }
@@ -52,23 +52,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 5rem;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 32px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  padding: 5rem 6rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(13, 148, 136, 0.1);
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .logoContainer {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .logo {
@@ -76,38 +76,22 @@
   animation: logoEnter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, float 4s ease-in-out 1.2s infinite;
   opacity: 0;
   transform: scale(0.5);
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
 }
 
-.pulseRing, .pulseRing2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid var(--primary-color);
-  opacity: 0;
-  z-index: 1;
-  animation: ripple 2.5s cubic-bezier(0.21, 0.53, 0.56, 0.8) infinite;
-}
-
-.pulseRing2 {
-  animation-delay: 1.25s;
-  border-color: var(--secondary-color);
-}
+/* Removed pulse rings */
 
 .brandName {
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   overflow: hidden;
+  letter-spacing: -1px;
 }
 
 .textGradient {
   display: inline-block;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, #0d9488 0%, #0369a1 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -120,47 +104,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  width: 260px;
+  gap: 1.25rem;
+  width: 280px;
 }
 
-.loadingBarContainer {
-  width: 100%;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  animation: fadeIn 0.8s ease 0.8s forwards;
-  opacity: 0;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.loadingBar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 12px;
-  position: relative;
-  animation: fillBar 1.2s cubic-bezier(0.75, 0, 0.25, 1) 0.8s forwards;
-}
-
-.loadingGlow {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  filter: blur(4px);
-  opacity: 0.6;
+.pulseDot {
+  width: 16px;
+  height: 16px;
+  background-color: #0d9488;
+  border-radius: 50%;
+  animation: gentlePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  margin-top: 10px;
 }
 
 .loadingText {
   font-size: 0.8rem;
   color: #64748b;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-weight: 500;
+  letter-spacing: 2px;
   text-transform: uppercase;
   animation: fadeIn 0.8s ease 0.8s forwards;
   opacity: 0;
@@ -171,24 +132,32 @@
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-@keyframes ripple {
-  0% { width: 100%; height: 100%; opacity: 0.6; border-width: 2px; }
-  100% { width: 280%; height: 280%; opacity: 0; border-width: 0px; }
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(13, 148, 136, 0);
+  }
 }
 
 @keyframes floatOrb {
   0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, -40px) scale(1.1); }
+  100% { transform: translate(60px, -60px) scale(1.2); }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes slideUpFade {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes fadeIn {
@@ -203,9 +172,10 @@
 
 @media (max-width: 768px) {
   .glassContainer {
-    padding: 3rem 2rem;
+    padding: 3.5rem 2rem;
     width: 90%;
     max-width: 400px;
+    border-radius: 32px;
   }
   
   .brandName {

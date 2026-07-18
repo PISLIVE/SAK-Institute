@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import styles from './ApplicationForm.module.css';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { toast } from 'react-hot-toast';
 
 export default function ApplicationForm() {
   const [step, setStep] = useState(1);
@@ -17,8 +18,11 @@ export default function ApplicationForm() {
     lastName: '',
     email: '',
     phone: '',
+    address2: '', // honeypot
     dob: '',
     gender: '',
+    district: '',
+    state: '',
     qualification: '',
     stream: '',
     percentage: '',
@@ -50,13 +54,14 @@ export default function ApplicationForm() {
       if (response.ok) {
         setAppId(data.applicationId);
         setStatus('success');
+        toast.success('Application submitted successfully!');
       } else {
-        alert('Failed to submit application. Please try again.');
+        toast.error(data.error || 'Failed to submit application. Please try again.');
         setStatus('idle');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred. Please try again later.');
+      toast.error('An error occurred. Please try again later.');
       setStatus('idle');
     }
   };
@@ -67,17 +72,21 @@ export default function ApplicationForm() {
     try {
       const canvas = await html2canvas(receiptRef.current, { scale: 2 });
       const imgData = canvas.toDataURL('image/png');
+      
       const pdf = new jsPDF({
         orientation: 'portrait',
-        unit: 'px',
-        format: [canvas.width, canvas.height]
+        unit: 'mm',
+        format: 'a4'
       });
       
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      const pdfWidth = 210; // A4 width in mm
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width; // Scale height proportionally
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(`SAK_Application_${appId}.pdf`);
     } catch (error) {
       console.error('Failed to generate PDF', error);
-      alert('Could not download receipt. Please try again.');
+      toast.error('Could not download receipt. Please try again.');
     }
   };
 
@@ -100,31 +109,102 @@ export default function ApplicationForm() {
 
         {/* Hidden Receipt for PDF Generation */}
         <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
-          <div ref={receiptRef} style={{ width: '800px', padding: '40px', background: 'white', color: 'black', fontFamily: 'sans-serif' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '2px solid #0d9488', paddingBottom: '20px', marginBottom: '20px' }}>
-              <div>
-                <h1 style={{ color: '#0d9488', margin: 0 }}>SAK College of Nursing</h1>
-                <p style={{ margin: '5px 0 0 0', color: '#666' }}>Guwahati, Assam</p>
+          <div ref={receiptRef} style={{ width: '800px', padding: '40px', background: '#ffffff', color: '#1f2937', fontFamily: 'Arial, sans-serif' }}>
+            {/* Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '3px solid #0d9488', paddingBottom: '20px', marginBottom: '30px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <img src="/sak-logo.png" style={{ width: '70px', height: '80px', objectFit: 'contain' }} alt="SAK Logo" />
+                <div>
+                  <h1 style={{ color: '#0d9488', margin: '0 0 5px 0', fontSize: '28px', textTransform: 'uppercase', letterSpacing: '1px' }}>SAK College of Nursing</h1>
+                  <p style={{ margin: '0', color: '#4b5563', fontSize: '14px' }}>Guwahati, Assam | Approved by INC & Srimanta Sankaradeva University</p>
+                </div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <h2 style={{ margin: 0, color: '#333' }}>Application Receipt</h2>
-                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold' }}>ID: {appId}</p>
-                <p style={{ margin: '5px 0 0 0', color: '#666' }}>Date: {new Date().toLocaleDateString()}</p>
+                <h2 style={{ margin: '0 0 8px 0', color: '#1f2937', fontSize: '22px' }}>Application Receipt</h2>
+                <div style={{ display: 'inline-block', background: '#f3f4f6', padding: '8px 15px', borderRadius: '6px', border: '1px solid #e5e7eb' }}>
+                  <p style={{ margin: '0 0 4px 0', fontSize: '12px', color: '#6b7280', textTransform: 'uppercase' }}>Application ID</p>
+                  <p style={{ margin: '0', fontWeight: 'bold', fontSize: '16px', color: '#0d9488' }}>{appId}</p>
+                </div>
               </div>
             </div>
             
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+            {/* Main Details Section */}
+            <h3 style={{ fontSize: '18px', color: '#111827', borderBottom: '1px solid #e5e7eb', paddingBottom: '8px', marginBottom: '15px' }}>1. Program Information</h3>
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '30px', fontSize: '15px' }}>
               <tbody>
-                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Applicant Name:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.firstName} {formData.lastName}</td></tr>
-                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Course Applied For:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee', fontWeight: 'bold', color: '#0d9488' }}>{formData.course.toUpperCase()}</td></tr>
-                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Email Address:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.email}</td></tr>
-                <tr><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}><strong>Phone Number:</strong></td><td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>{formData.phone}</td></tr>
+                <tr>
+                  <td style={{ padding: '12px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '30%', fontWeight: 'bold', color: '#475569' }}>Applied Course</td>
+                  <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#0d9488', fontSize: '16px' }}>{formData.course.toUpperCase()}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '12px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Application Date</td>
+                  <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0' }}>{new Date().toLocaleString()}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 style={{ fontSize: '18px', color: '#111827', borderBottom: '1px solid #e5e7eb', paddingBottom: '8px', marginBottom: '15px' }}>2. Personal Details</h3>
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '30px', fontSize: '15px' }}>
+              <tbody>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>Applicant Name</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.firstName} {formData.lastName}</td>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>Gender</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.gender}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Date of Birth</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0' }}>{formData.dob}</td>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Phone Number</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0' }}>{formData.phone}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Email Address</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0' }} colSpan={3}>{formData.email}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>District</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.district}</td>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>State</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.state}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 style={{ fontSize: '18px', color: '#111827', borderBottom: '1px solid #e5e7eb', paddingBottom: '8px', marginBottom: '15px' }}>3. Academic Qualifications</h3>
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '30px', fontSize: '15px' }}>
+              <tbody>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>Highest Qualification</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.qualification}</td>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', width: '25%', fontWeight: 'bold', color: '#475569' }}>Stream / Major</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', width: '25%' }}>{formData.stream}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Institution Attended</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0' }} colSpan={3}>{formData.institution}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Passing Year</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0' }}>{formData.passingYear}</td>
+                  <td style={{ padding: '10px 15px', background: '#f8fafc', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#475569' }}>Percentage / Grade</td>
+                  <td style={{ padding: '10px 15px', border: '1px solid #e2e8f0', fontWeight: 'bold' }}>{formData.percentage}%</td>
+                </tr>
               </tbody>
             </table>
             
-            <div style={{ marginTop: '40px', textAlign: 'center', color: '#666', fontSize: '0.9em' }}>
-              <p>This is an electronically generated receipt and does not require a physical signature.</p>
-              <p>Please keep this receipt for your records.</p>
+            {/* Footer */}
+            <div style={{ marginTop: '50px', paddingTop: '20px', borderTop: '2px dashed #cbd5e1', color: '#64748b', fontSize: '13px', lineHeight: '1.5' }}>
+              <p style={{ margin: '0 0 10px 0' }}><strong>Declaration:</strong> I hereby declare that the information provided above is true and correct to the best of my knowledge.</p>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginTop: '40px' }}>
+                <div>
+                  <p style={{ margin: 0 }}>________________________</p>
+                  <p style={{ margin: '5px 0 0 0', fontWeight: 'bold' }}>Admissions Office</p>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ margin: 0, fontStyle: 'italic', color: '#94a3b8' }}>This is a computer-generated receipt<br/>and does not require a physical signature.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -186,6 +266,20 @@ export default function ApplicationForm() {
                   <option value="other">Other</option>
                 </select>
               </div>
+              <div className={styles.inputGroup}>
+                <label>District</label>
+                <input type="text" name="district" value={formData.district} onChange={handleChange} required placeholder="E.g., Kamrup" maxLength={50} />
+              </div>
+              <div className={styles.inputGroup}>
+                <label>State</label>
+                <input type="text" name="state" value={formData.state} onChange={handleChange} required placeholder="E.g., Assam" maxLength={50} />
+              </div>
+            </div>
+            
+            {/* Honeypot field - invisible to users, bots will fill it */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <label>Address 2 (Leave Blank)</label>
+              <input type="text" name="address2" value={formData.address2} onChange={handleChange} tabIndex={-1} autoComplete="off" />
             </div>
           </div>
         )}

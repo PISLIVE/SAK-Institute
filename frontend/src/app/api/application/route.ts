@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(request: Request) {
   try {
@@ -11,14 +12,23 @@ export async function POST(request: Request) {
       phone, 
       dob, 
       gender,
+      district,
+      state,
       qualification,
       stream,
       percentage,
       passingYear,
       institution,
       course,
-      source
+      source,
+      address2 // honeypot
     } = data;
+
+    // Honeypot check for spam bots
+    if (address2) {
+      console.log('Spam bot detected via honeypot in application form.');
+      return NextResponse.json({ message: 'Application submitted successfully' }, { status: 200 });
+    }
 
     // Minimal validation
     if (!firstName || !email || !phone || !course) {
@@ -113,6 +123,27 @@ export async function POST(request: Request) {
         </div>
       `,
     };
+
+    // Save to Database
+    await prisma.application.create({
+      data: {
+        firstName, 
+        lastName, 
+        email, 
+        phone, 
+        dob, 
+        gender,
+        district,
+        state,
+        qualification,
+        stream,
+        percentage,
+        passingYear,
+        institution,
+        course,
+        source: source || null
+      }
+    });
 
     // If no credentials, simulate success
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {

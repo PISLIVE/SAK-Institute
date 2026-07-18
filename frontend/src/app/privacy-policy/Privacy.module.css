@@ -1,52 +1,104 @@
 .pageWrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-  padding: 4rem 1rem;
-  font-family: 'Georgia', serif;
-  color: #333;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 6rem 1rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: #334155;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background floating elements */
+.pageWrapper::before, .pageWrapper::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.pageWrapper::before {
+  width: 400px;
+  height: 400px;
+  background: rgba(45, 212, 191, 0.15); /* teal */
+  top: -100px;
+  left: -100px;
+}
+
+.pageWrapper::after {
+  width: 500px;
+  height: 500px;
+  background: rgba(14, 165, 233, 0.15); /* sky blue */
+  bottom: -200px;
+  right: -100px;
 }
 
 .documentContainer {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 4rem 5rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  max-width: 850px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 5rem 6rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .documentContainer::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-  border-radius: 12px 12px 0 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background-image: url('/sak-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 3rem;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #2dd4bf);
+  border-radius: 2px;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .lastUpdated {
-  font-style: italic;
-  color: #666;
-  font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .content {
@@ -55,40 +107,58 @@
 }
 
 .content h2 {
-  font-size: 1.5rem;
-  color: #1e3a8a;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .content h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .content p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #475569;
 }
 
 .content ul {
-  margin-bottom: 1.25rem;
-  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  list-style-type: none;
 }
 
 .content li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #475569;
+}
+
+.content li::before {
+  content: "•";
+  color: #0ea5e9;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -6px;
 }
 
 @media (max-width: 768px) {
+  .pageWrapper {
+    padding: 2rem 1rem;
+  }
   .documentContainer {
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 2rem;
+    border-radius: 16px;
   }
   .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }

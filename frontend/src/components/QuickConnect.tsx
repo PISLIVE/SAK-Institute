@@ -10,8 +10,6 @@ export default function QuickConnect() {
   return (
     <div 
       className={`${styles.quickConnectContainer} ${isOpen ? styles.open : ''}`}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className={styles.expandMenu}>

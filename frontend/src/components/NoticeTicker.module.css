@@ -51,6 +51,13 @@
   align-items: center;
 }
 
+/* Fix ReactQuill paragraphs to stay inline */
+.tickerItem p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
 .tickerLink {
   color: #5eead4;
   margin-left: 10px;

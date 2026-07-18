@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './EnquiryForm.module.css';
+import { toast } from 'react-hot-toast';
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -23,13 +24,14 @@ export default function EnquiryForm() {
 
       if (res.ok) {
         setStatus('success');
+        toast.success('Enquiry submitted successfully!');
       } else {
-        alert('Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.');
         setStatus('idle');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.');
       setStatus('idle');
     }
   };
@@ -92,6 +94,12 @@ export default function EnquiryForm() {
             <div className={styles.inputField}>
               <textarea id="message" name="message" rows={4} required placeholder=" "></textarea>
               <label htmlFor="message">Your Message / Questions</label>
+            </div>
+            
+            {/* Honeypot field - invisible to users, bots will fill it */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <label>Address 2 (Leave Blank)</label>
+              <input type="text" name="address2" tabIndex={-1} autoComplete="off" />
             </div>
 
             <button type="submit" className={`btn-primary ${styles.submitBtn}`} disabled={status === 'submitting'}>

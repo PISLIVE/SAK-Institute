@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import styles from './Footer.module.css';
 import {
   FaFacebookF,
@@ -14,7 +15,40 @@ import {
   FaPaperPlane
 } from 'react-icons/fa';
 
+type SiteSettings = {
+  collegeName: string;
+  email: string;
+  phone: string;
+  address: string;
+  facebookUrl: string;
+  instagramUrl: string;
+  twitterUrl: string;
+  linkedinUrl: string;
+};
+
 export default function Footer() {
+  const [settings, setSettings] = useState<SiteSettings>({
+    collegeName: 'SAK College of Nursing',
+    email: 'info@sakcollege.edu',
+    phone: '+91 8884330808',
+    address: 'SAK College Campus, Guwahati, Assam',
+    facebookUrl: '#',
+    instagramUrl: '#',
+    twitterUrl: '#',
+    linkedinUrl: '#'
+  });
+
+  useEffect(() => {
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.error) {
+          setSettings(data);
+        }
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerTopBorder}></div>
@@ -31,18 +65,18 @@ export default function Footer() {
               style={{ objectFit: 'contain' }}
             />
             <div className={styles.brandText}>
-              <h2 className={styles.collegeName}>SAK College</h2>
-              <p className={styles.collegeSubName}>of Nursing</p>
+              <h2 className={styles.collegeName}>{settings.collegeName.split(' ')[0]} {settings.collegeName.split(' ')[1]}</h2>
+              <p className={styles.collegeSubName}>{settings.collegeName.split(' ').slice(2).join(' ')}</p>
             </div>
           </Link>
           <p className={styles.description}>
             Empowering the next generation of healthcare leaders through world-class nursing education, cutting-edge clinical training, and a passion for caring.
           </p>
           <div className={styles.socials}>
-            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="#" aria-label="Twitter"><FaTwitter /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            {settings.facebookUrl && <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>}
+            {settings.twitterUrl && <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter /></a>}
+            {settings.instagramUrl && <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>}
+            {settings.linkedinUrl && <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>}
           </div>
         </div>
 
@@ -70,21 +104,21 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 4: Contact & Newsletter */}
+        {/* Column 4: Contact & Updates */}
         <div className={styles.footerContact}>
           <h3>Contact & Updates</h3>
           <ul>
             <li>
               <FaMapMarkerAlt className={styles.contactIcon} />
-              <span>SAK College Campus, Guwahati, Assam</span>
+              <span>{settings.address}</span>
             </li>
             <li>
               <FaPhoneAlt className={styles.contactIcon} />
-              <a href="tel:+918884330808">+91 8884330808</a>
+              <a href={`tel:${settings.phone}`}>{settings.phone}</a>
             </li>
             <li>
               <FaEnvelope className={styles.contactIcon} />
-              <a href="mailto:info@sakcollege.edu">info@sakcollege.edu</a>
+              <a href={`mailto:${settings.email}`}>{settings.email}</a>
             </li>
           </ul>
 
@@ -103,7 +137,7 @@ export default function Footer() {
 
       <div className={styles.footerBottom}>
         <div className={styles.bottomContainer}>
-          <p>&copy; {new Date().getFullYear()} SAK Group of Institutions. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {settings.collegeName}. All rights reserved.</p>
           <p className={styles.creditText}>
             Designed and Developed by <a href="https://novi-q-technologies.vercel.app/" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>NoviQ Technologies</a>
           </p>

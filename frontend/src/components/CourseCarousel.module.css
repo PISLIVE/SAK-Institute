@@ -29,34 +29,35 @@
 
 .card {
   padding: 2.5rem 2rem;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
   animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
   
-  /* 3D and Background Setup */
+  /* Background Setup */
   position: relative;
   background-size: cover;
   background-position: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  border: none;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, rgba(13, 148, 136, 0.7), rgba(0, 0, 0, 0.9));
+  background: linear-gradient(to bottom, rgba(13, 148, 136, 0.85), rgba(15, 23, 42, 0.95));
   z-index: 1;
+  transition: background 0.4s ease;
 }
 
 .card > * {
   position: relative;
   z-index: 2;
-  transform: translateZ(30px);
+  transition: transform 0.4s ease;
 }
 
 .card:nth-child(1) { animation-delay: 0.1s; }
@@ -65,8 +66,13 @@
 .card:nth-child(4) { animation-delay: 0.4s; }
 
 .card:hover {
-  transform: perspective(1000px) rotateX(6deg) rotateY(-6deg) scale3d(1.05, 1.05, 1.05);
-  box-shadow: 0 25px 50px rgba(13, 148, 136, 0.4);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.3);
+  border-color: rgba(94, 234, 212, 0.3);
+}
+
+.card:hover::before {
+  background: linear-gradient(to bottom, rgba(13, 148, 136, 0.75), rgba(15, 23, 42, 0.9));
 }
 
 .icon {

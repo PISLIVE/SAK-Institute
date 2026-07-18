@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import QuickConnect from "@/components/QuickConnect";
 import NoticeTicker from "@/components/NoticeTicker";
+import HideOnAdmin from "@/components/HideOnAdmin";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,12 +45,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <SplashScreen />
-        <NoticeTicker />
-        <Navbar />
+        <Toaster position="top-right" />
+        <HideOnAdmin>
+          <SplashScreen />
+          <NoticeTicker />
+          <Navbar />
+        </HideOnAdmin>
         <main>{children}</main>
-        <Footer />
-        <QuickConnect />
+        <HideOnAdmin>
+          <Footer />
+          <QuickConnect />
+        </HideOnAdmin>
       </body>
     </html>
   );

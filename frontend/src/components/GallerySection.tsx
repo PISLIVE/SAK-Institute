@@ -1,23 +1,43 @@
 "use client";
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './GallerySection.module.css';
 
+type GalleryImage = {
+  id: string;
+  imageUrl: string;
+  caption: string | null;
+  category: string;
+};
+
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  // Array of image numbers, replacing 8 with 15
-  const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 15, 9, 10, 11, 12, 13, 14];
-  const galleryImages = imageNumbers.map((num) => ({
-    id: num,
-    src: `/gallery${num}.${num === 15 ? 'png' : 'jpeg'}`,
-    alt: `SAK College Gallery Image ${num}`
-  }));
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+
+  useEffect(() => {
+    fetch('/api/gallery')
+      .then(res => res.json())
+      .then(data => {
+        // If DB has no images yet, fallback to the hardcoded aesthetic ones for the demo
+        if (!data || data.length === 0) {
+          const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 15, 9, 10, 11, 12, 13, 14];
+          setGalleryImages(imageNumbers.map((num) => ({
+            id: String(num),
+            imageUrl: `/gallery${num}.${num === 15 ? 'png' : 'jpeg'}`,
+            caption: `SAK College Gallery Image ${num}`,
+            category: 'CAMPUS'
+          })));
+        } else {
+          setGalleryImages(data);
+        }
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   return (
     <section className={styles.gallerySection}>
-      {/* Aesthetic Sliding Side Text */}
       <div className={styles.sideTextLeft}>
         <div className={styles.slidingText}>CLINICAL TRAINING &bull; CAMPUS LIFE &bull; CLINICAL TRAINING &bull; CAMPUS LIFE &bull;</div>
       </div>
@@ -35,7 +55,6 @@ export default function GallerySection() {
         
         <div className={styles.galleryGrid}>
           {galleryImages.map((image, index) => {
-            // Create a masonry-like effect by making specific images larger
             const isLarge = index === 0 || index === 7;
             const isWide = index === 3 || index === 10;
             
@@ -44,17 +63,17 @@ export default function GallerySection() {
             else if (isWide) itemClass += ` ${styles.wide}`;
 
             return (
-              <div key={image.id} className={itemClass} onClick={() => setSelectedImage(image.src)}>
+              <div key={image.id} className={itemClass} onClick={() => setSelectedImage(image.imageUrl)}>
                 <Image 
-                  src={image.src} 
-                  alt={image.alt} 
+                  src={image.imageUrl} 
+                  alt={image.caption || 'Gallery Image'} 
                   fill 
                   style={{ objectFit: 'cover' }} 
                   className={styles.image} 
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className={styles.overlay}>
-                  <span>SAK College Life 🔍</span>
+                  <span>{image.caption || 'SAK College Life'} 🔍</span>
                 </div>
               </div>
             );

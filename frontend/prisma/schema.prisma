@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("ADMIN") // ADMIN, SUB_ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notice {
+  id        String   @id @default(cuid())
+  content   String
+  link      String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  course    String
+  message   String?
+  status    String   @default("PENDING") // PENDING, REVIEWED, RESOLVED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Application {
+  id            String   @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  dob           String
+  gender        String
+  district      String?
+  state         String?
+  qualification String
+  stream        String
+  percentage    String
+  passingYear   String
+  institution   String
+  course        String
+  source        String?
+  status        String   @default("PENDING") // PENDING, UNDER_REVIEW, ACCEPTED, REJECTED
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  name        String
+  duration    String
+  seats       Int
+  fees        String
+  eligibility String
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Faculty {
+  id            String   @id @default(cuid())
+  name          String
+  designation   String
+  qualification String
+  imageUrl      String?
+  department    String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Gallery {
+  id          String   @id @default(cuid())
+  imageUrl    String
+  caption     String?
+  category    String   @default("CAMPUS") // CAMPUS, EVENTS, LABS, OTHERS
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SiteSettings {
+  id            String   @id @default(cuid())
+  collegeName   String   @default("SAK College of Nursing")
+  email         String   @default("info@sakcollege.edu")
+  phone         String   @default("+91 8884330808")
+  address       String   @default("SAK College Campus, Guwahati, Assam")
+  facebookUrl   String?
+  twitterUrl    String?
+  instagramUrl  String?
+  linkedinUrl   String?
+  updatedAt     DateTime @updatedAt
+}

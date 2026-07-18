@@ -1,0 +1,174 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+}
+
+.logo {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.logo h2 {
+  color: #2dd4bf;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.logo p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.nav {
+  flex-grow: 1;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for nav */
+.nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navItem {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 500;
+  margin: 0.15rem 0;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  transform: translateX(6px);
+}
+
+.navItem.active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  box-shadow: 0 4px 15px -3px rgba(37, 99, 235, 0.4);
+  font-weight: 600;
+}
+
+.icon {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  transition: transform 0.25s ease;
+}
+
+.navItem:hover .icon {
+  transform: scale(1.1);
+}
+
+.logoutBtn {
+  margin: 1rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.logoutBtn:hover {
+  background: #dc2626;
+  color: white;
+  box-shadow: 0 6px 15px -3px rgba(220, 38, 38, 0.4);
+  transform: translateY(-2px);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.adminMain {
+  margin-left: 260px;
+  flex-grow: 1;
+  padding: 2.5rem;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  position: relative;
+}
+
+.adminMain::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: calc(50% + 130px);
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background-image: url('/sak-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content stays above the watermark */
+.adminMain > * {
+  position: relative;
+  z-index: 2;
+}

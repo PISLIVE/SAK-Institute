@@ -1,10 +1,17 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { name, email, phone, course, message } = data;
+    const { name, email, phone, course, message, address2 } = data;
+
+    // Honeypot check for spam bots
+    if (address2) {
+      console.log('Spam bot detected via honeypot in enquiry form.');
+      return NextResponse.json({ success: true, simulated: true });
+    }
 
     // Validate inputs
     if (!name || !email || !phone || !course) {
@@ -54,6 +61,17 @@ export async function POST(request: Request) {
         </div>
       `,
     };
+
+    // Save to Database
+    await prisma.enquiry.create({
+      data: {
+        name,
+        email,
+        phone,
+        course,
+        message: message || null,
+      }
+    });
 
     // If no credentials are set, simulate success in dev, but log a warning.
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
