@@ -1,38 +1,20 @@
 import Link from 'next/link';
 import styles from './CourseCarousel.module.css';
+import { prisma } from '@/lib/prisma';
 
-const courses = [
-  {
-    id: 'gnm',
-    title: 'GNM (General Nursing)',
-    desc: 'Comprehensive training in general nursing and midwifery to prepare you for clinical excellence.',
-    icon: '🏥',
-    image: '/nursing_students.png'
-  },
-  {
-    id: 'bsc',
-    title: 'B.Sc. Nursing',
-    desc: 'A 4-year degree program focusing on advanced nursing principles, anatomy, and patient care.',
-    icon: '⚕️',
-    image: '/medical_research.png'
-  },
-  {
-    id: 'post-basic',
-    title: 'Post Basic B.Sc. Nursing',
-    desc: 'Upgrade your GNM diploma to a full bachelor\'s degree to expand your career opportunities.',
-    icon: '🎓',
-    image: '/nursing_students.png'
-  },
-  {
-    id: 'msc',
-    title: 'M.Sc. Nursing',
-    desc: 'Specialized postgraduate program for advanced clinical practice and nursing management.',
-    icon: '🔬',
-    image: '/medical_research.png'
+export default async function CourseCarousel() {
+  const dbCourses = await prisma.course.findMany({
+    where: { isActive: true },
+    take: 6, // Show up to 6 courses on homepage
+  });
+
+  const fallbackIcons = ['🏥', '⚕️', '🎓', '🔬', '💉', '👩‍⚕️'];
+  const fallbackImages = ['/nursing_students.png', '/medical_research.png'];
+
+  if (dbCourses.length === 0) {
+    return null; // Don't show if no courses in DB
   }
-];
 
-export default function CourseCarousel() {
   return (
     <section className={styles.coursesSection}>
       <div className="container">
@@ -42,20 +24,25 @@ export default function CourseCarousel() {
         </div>
         
         <div className={styles.grid}>
-          {courses.map(course => (
-            <div 
-              key={course.id} 
-              className={`glass-panel ${styles.card}`}
-              style={{ backgroundImage: `url(${course.image})` }}
-            >
-              <div className={styles.icon}>{course.icon}</div>
-              <h3 className={styles.cardTitle}>{course.title}</h3>
-              <p className={styles.cardDesc}>{course.desc}</p>
-              <Link href={`/courses/${course.id}`} className={styles.cardLink}>
-                Learn More &rarr;
-              </Link>
-            </div>
-          ))}
+          {dbCourses.map((course, index) => {
+            const icon = fallbackIcons[index % fallbackIcons.length];
+            const image = fallbackImages[index % fallbackImages.length];
+            
+            return (
+              <div 
+                key={course.id} 
+                className={`glass-panel ${styles.card}`}
+                style={{ backgroundImage: `url(${image})` }}
+              >
+                <div className={styles.icon}>{icon}</div>
+                <h3 className={styles.cardTitle}>{course.name}</h3>
+                <p className={styles.cardDesc}>{course.description || `Duration: ${course.duration} | Seats: ${course.seats}`}</p>
+                <Link href="/courses" className={styles.cardLink}>
+                  Learn More &rarr;
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -20,21 +20,16 @@ export default function GallerySection() {
     fetch('/api/gallery')
       .then(res => res.json())
       .then(data => {
-        // If DB has no images yet, fallback to the hardcoded aesthetic ones for the demo
-        if (!data || data.length === 0) {
-          const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 15, 9, 10, 11, 12, 13, 14];
-          setGalleryImages(imageNumbers.map((num) => ({
-            id: String(num),
-            imageUrl: `/gallery${num}.${num === 15 ? 'png' : 'jpeg'}`,
-            caption: `SAK College Gallery Image ${num}`,
-            category: 'CAMPUS'
-          })));
-        } else {
+        if (data && data.length > 0) {
           setGalleryImages(data);
         }
       })
       .catch(err => console.error(err));
   }, []);
+
+  if (galleryImages.length === 0) {
+    return null;
+  }
 
   return (
     <section className={styles.gallerySection}>
