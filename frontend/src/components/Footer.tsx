@@ -31,7 +31,7 @@ export default function Footer() {
     collegeName: 'SAK College of Nursing',
     email: 'info@sakcollege.edu',
     phone: '+91 8884330808',
-    address: 'SAK College Campus, Guwahati, Assam',
+    address: 'SAK College Campus, Banglore, India',
     facebookUrl: '#',
     instagramUrl: '#',
     twitterUrl: '#',

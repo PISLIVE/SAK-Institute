@@ -31,7 +31,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="animate-on-load">Campus Address</h3>
-                  <p>SAK College Campus<br />Guwahati, Assam</p>
+                  <p>SAK College Campus<br />Banglore, India</p>
                 </div>
               </div>
 

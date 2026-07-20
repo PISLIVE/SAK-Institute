@@ -116,7 +116,7 @@ export default function ApplicationForm() {
                 <img src="/sak-logo.png" style={{ width: '70px', height: '80px', objectFit: 'contain' }} alt="SAK Logo" />
                 <div>
                   <h1 style={{ color: '#0d9488', margin: '0 0 5px 0', fontSize: '28px', textTransform: 'uppercase', letterSpacing: '1px' }}>SAK College of Nursing</h1>
-                  <p style={{ margin: '0', color: '#4b5563', fontSize: '14px' }}>Guwahati, Assam | Approved by INC & Srimanta Sankaradeva University</p>
+                  <p style={{ margin: '0', color: '#4b5563', fontSize: '14px' }}>Banglore, India | Approved by INC & Srimanta Sankaradeva University</p>
                 </div>
               </div>
               <div style={{ textAlign: 'right' }}>
