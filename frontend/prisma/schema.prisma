@@ -104,7 +104,7 @@ model SiteSettings {
   collegeName   String   @default("SAK College of Nursing")
   email         String   @default("info@sakcollege.edu")
   phone         String   @default("+91 8884330808")
-  address       String   @default("SAK College Campus, Guwahati, Assam")
+  address       String   @default("SAK College Campus, Banglore, India")
   facebookUrl   String?
   twitterUrl    String?
   instagramUrl  String?
